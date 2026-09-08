@@ -1,5 +1,5 @@
 
-const departureDate = "202-10-01T21:00:00";
+const departureDate = "2026-10-01T21:00:00";
 
 // ---------------- COUNTDOWN ----------------
 function updateCountdown() {
