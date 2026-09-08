@@ -97,3 +97,4 @@ function closeTip() {
 document.getElementById("tip-modal").addEventListener("click", (event) => {
     if (event.target.id === "tip-modal") closeTip();
 });
+//test
