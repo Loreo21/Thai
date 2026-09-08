@@ -1,14 +1,5 @@
-/*
- * THAILANDIA 2026
- * -------------------------------------------------
- * 1. Inserisci la data/ora di partenza qui sotto.
- * 2. Salva il file.
- * 3. Ricarica la pagina.
- *
- * Formato: "YYYY-MM-DDTHH:MM:SS"
- * Esempio: "2027-08-10T14:30:00"
- */
-const departureDate = "2027-08-10T14:30:00";
+
+const departureDate = "202-10-01T21:00:00";
 
 // ---------------- COUNTDOWN ----------------
 function updateCountdown() {
