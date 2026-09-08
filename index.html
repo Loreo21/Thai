@@ -1,28 +1,222 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Thailandia 2026</title>
+    <meta name="theme-color" content="#0f766e">
+    <meta name="description" content="Thailandia 2026 - il nostro viaggio">
+    <title>Thailandia 2026 🇹🇭</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <header class="navbar">
+        <a class="logo" href="#home">THAILANDIA<span>'26</span></a>
+        <button class="menu-toggle" aria-label="Apri menu">☰</button>
+        <nav class="nav-links">
+            <a href="#viaggio">Viaggio</a>
+            <a href="#itinerario">Itinerario</a>
+            <a href="#info">Info</a>
+            <a href="#checklist">Checklist</a>
+        </nav>
+    </header>
 
-    <h1>🇹🇭 Thailandia 2026</h1>
+    <main id="home">
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="eyebrow">✈️ IL NOSTRO VIAGGIO</p>
+                <h1>Thailandia<br><em>2026</em></h1>
+                <p class="hero-subtitle">Sole, templi, mare, street food e pessime decisioni.</p>
 
-    <p>Il nostro viaggio in Thailandia!</p>
+                <div class="countdown-card">
+                    <span class="countdown-label">PARTENZA TRA</span>
+                    <div id="countdown" class="countdown">
+                        <div><strong id="days">--</strong><small>giorni</small></div>
+                        <div><strong id="hours">--</strong><small>ore</small></div>
+                        <div><strong id="minutes">--</strong><small>min</small></div>
+                        <div><strong id="seconds">--</strong><small>sec</small></div>
+                    </div>
+                    <p id="countdown-message">Imposta la data di partenza in <code>script.js</code>.</p>
+                </div>
 
-    <h2>Itinerario</h2>
+                <a href="#itinerario" class="hero-button">Scopri il viaggio ↓</a>
+            </div>
+            <div class="scroll-hint">SCROLL</div>
+        </section>
 
-    <ul>
-        <li>Bangkok</li>
-        <li>Chiang Mai</li>
-        <li>Phuket</li>
-        <li>Krabi</li>
-    </ul>
+        <section id="viaggio" class="section intro">
+            <div class="section-heading">
+                <p class="eyebrow">IL PIANO</p>
+                <h2>Una vacanza.<br><em>Zero organizzazione.</em></h2>
+            </div>
+            <p class="intro-text">
+                Questa pagina raccoglie tutto quello che ci serve per il viaggio:
+                itinerario, voli, alloggi, cose da fare e checklist. Il resto lo
+                scopriremo quando saremo lì.
+            </p>
 
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <span class="stat-icon">📍</span>
+                    <strong id="city-count">4</strong>
+                    <span>destinazioni</span>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">🌴</span>
+                    <strong>1</strong>
+                    <span>avventura</span>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">🍜</span>
+                    <strong>∞</strong>
+                    <span>pad thai</span>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">😴</span>
+                    <strong>0</strong>
+                    <span>ore di sonno</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="itinerario" class="section itinerary-section">
+            <div class="section-heading centered">
+                <p class="eyebrow">ROADMAP</p>
+                <h2>Il nostro <em>itinerario</em></h2>
+                <p>Da nord a sud, con qualche deviazione probabilmente non prevista.</p>
+            </div>
+
+            <div class="timeline">
+                <article class="timeline-item">
+                    <div class="timeline-dot">01</div>
+                    <div class="timeline-card">
+                        <div class="place-image bangkok">🇹🇭</div>
+                        <div class="place-content">
+                            <span class="date">GIORNI 1–3</span>
+                            <h3>Bangkok</h3>
+                            <p>Templi, rooftop, mercati e il primo vero assaggio della Thailandia.</p>
+                            <div class="tags"><span>🏯 Templi</span><span>🍜 Street food</span><span>🌃 Nightlife</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-dot">02</div>
+                    <div class="timeline-card">
+                        <div class="place-image chiangmai">🌿</div>
+                        <div class="place-content">
+                            <span class="date">GIORNI 4–6</span>
+                            <h3>Chiang Mai</h3>
+                            <p>Montagne, natura, templi e qualche giornata decisamente più tranquilla.</p>
+                            <div class="tags"><span>🐘 Natura</span><span>🏯 Templi</span><span>☕ Cafè</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-dot">03</div>
+                    <div class="timeline-card">
+                        <div class="place-image krabi">🏝️</div>
+                        <div class="place-content">
+                            <span class="date">GIORNI 7–10</span>
+                            <h3>Krabi</h3>
+                            <p>Mare, isole, barca e spiagge da sfondo del telefono.</p>
+                            <div class="tags"><span>🏖️ Spiagge</span><span>🚤 Isole</span><span>🤿 Snorkeling</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-dot">04</div>
+                    <div class="timeline-card">
+                        <div class="place-image phuket">🌅</div>
+                        <div class="place-content">
+                            <span class="date">GIORNI 11–14</span>
+                            <h3>Phuket</h3>
+                            <p>Ultimi giorni tra mare, tramonti e una quantità discutibile di cocktail analcolici.</p>
+                            <div class="tags"><span>🌊 Mare</span><span>🌅 Tramonti</span><span>🎉 Serate</span></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="info" class="section info-section">
+            <div class="section-heading">
+                <p class="eyebrow">DA SAPERE</p>
+                <h2>Le informazioni<br><em>importanti.</em></h2>
+            </div>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <span>✈️</span>
+                    <h3>Voli</h3>
+                    <p><strong>Roma → Bangkok</strong><br>Inserisci qui compagnia, orario e codice volo.</p>
+                    <button class="edit-hint" onclick="showTip('Voli', 'Modifica direttamente questo testo dentro index.html.')">✎ Come modificare</button>
+                </article>
+                <article class="info-card">
+                    <span>🏨</span>
+                    <h3>Alloggi</h3>
+                    <p><strong>Bangkok</strong><br>Hotel da definire<br><br><strong>Chiang Mai</strong><br>Hotel da definire</p>
+                </article>
+                <article class="info-card">
+                    <span>💳</span>
+                    <h3>Budget</h3>
+                    <p>Voli: <strong>€ ---</strong><br>Hotel: <strong>€ ---</strong><br>Extra: <strong>€ ---</strong></p>
+                </article>
+                <article class="info-card">
+                    <span>📱</span>
+                    <h3>Contatti</h3>
+                    <p>Salva qui i contatti utili, numeri di emergenza e informazioni sulla SIM/eSIM.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="checklist" class="section checklist-section">
+            <div class="section-heading centered">
+                <p class="eyebrow">PRIMA DI PARTIRE</p>
+                <h2>Checklist <em>✈️</em></h2>
+                <p>Le caselle vengono salvate automaticamente nel browser.</p>
+            </div>
+
+            <div class="checklist">
+                <label><input type="checkbox" data-check="passport"><span>Passaporto</span></label>
+                <label><input type="checkbox" data-check="insurance"><span>Assicurazione viaggio</span></label>
+                <label><input type="checkbox" data-check="flights"><span>Biglietti aerei</span></label>
+                <label><input type="checkbox" data-check="hotels"><span>Prenotazioni hotel</span></label>
+                <label><input type="checkbox" data-check="esim"><span>eSIM / SIM</span></label>
+                <label><input type="checkbox" data-check="adapter"><span>Adattatore / caricabatterie</span></label>
+                <label><input type="checkbox" data-check="powerbank"><span>Powerbank</span></label>
+                <label><input type="checkbox" data-check="medicine"><span>Kit da viaggio</span></label>
+            </div>
+
+            <div class="progress-wrap">
+                <div class="progress-top"><span>Preparazione</span><strong id="progress-text">0%</strong></div>
+                <div class="progress-bar"><div id="progress"></div></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <strong>THAILANDIA<span>'26</span></strong>
+            <p>Made with ☀️, 🌴 and questionable planning.</p>
+        </div>
+        <a href="#home">↑ Torna su</a>
+    </footer>
+
+    <div id="tip-modal" class="modal" aria-hidden="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeTip()">×</button>
+            <h3 id="modal-title"></h3>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
