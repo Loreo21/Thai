@@ -7,7 +7,7 @@
 // ============================================================
 // Data reale impostata sulla partenza indicata:
 // 1 ottobre 2026 alle 21:00.
-const departureDate = "2026-10-01T21:00:00";
+const departureDate = "2026-10-02T19:00:00";
 
 function updateCountdown() {
     const target = new Date(departureDate).getTime();
