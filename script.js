@@ -4,10 +4,10 @@ const departureDate = "2026-10-01T19:05:00";
 
 /* Dati delle destinazioni. Le coordinate possono essere modificate liberamente. */
 const destinations = [
-  {id:"chiangrai",number:1,name:"Chiang Rai",dates:"Tappa nel nord",region:"north",icon:"📍",imageClass:"north",description:"La tappa più a nord del nostro viaggio, tra templi e paesaggi del nord.",tags:["🏯 Templi","🌿 Nord","🧭 Esplorazione"],coords:[19.9105,99.8406]},
+  {id:"chiangrai",number:4,name:"Chiang Rai",dates:"Tappa nel nord",region:"north",icon:"📍",imageClass:"north",description:"La tappa più a nord del nostro viaggio, tra templi e paesaggi del nord.",tags:["🏯 Templi","🌿 Nord","🧭 Esplorazione"],coords:[19.9105,99.8406]},
   {id:"chiangmai",number:2,name:"Chiang Mai",dates:"6–10 ottobre",region:"north",icon:"🚂",imageClass:"chiangmai",description:"Il rifugio nel cuore storico della città, tra templi antichi e Terra degli Angeli.",tags:["🏯 Templi","🌺 Cultura","🌿 Natura"],coords:[18.7883,98.9853]},
   {id:"maewang",number:3,name:"Mae Wang",dates:"5 ottobre",region:"north",icon:"🐘",imageClass:"maewang",description:"Bungalow da 6. Sveglia all'alba: i nostri vicini di casa pesano 3 tonnellate.",tags:["🐘 Natura","🏡 Bungalow","🌄 Alba"],coords:[18.6165,98.7184]},
-  {id:"bangkok",number:4,name:"Bangkok",dates:"2–5 e 17–18 ottobre",region:"cities",icon:"✈️",imageClass:"bangkok",description:"Base tattica per sopravvivere al caos, allo street food, ai templi e ai Pad Thai.",tags:["🍜 Street food","🏯 Templi","🌃 Capitale"],coords:[13.7563,100.5018]},
+  {id:"bangkok",number:1,name:"Bangkok",dates:"2–5 e 17–18 ottobre",region:"cities",icon:"✈️",imageClass:"bangkok",description:"Base tattica per sopravvivere al caos, allo street food, ai templi e ai Pad Thai.",tags:["🍜 Street food","🏯 Templi","🌃 Capitale"],coords:[13.7563,100.5018]},
   {id:"surat",number:5,name:"Surat Thani",dates:"Tappa di trasferimento",region:"south",icon:"🚐",imageClass:"surat",description:"Tappa di passaggio verso Khao Sok e il sud della Thailandia.",tags:["🚐 Transfer","🗺️ Sud"],coords:[9.1382,99.3217]},
   {id:"khaosok",number:6,name:"Khao Sok",dates:"10–12 ottobre",region:"south",icon:"🌿",imageClass:"khaosok",description:"Giungla primordiale, umidità e spirito di adattamento.",tags:["🌴 Giungla","🛶 Natura","🐒 Wildlife"],coords:[8.9120,98.5290]},
   {id:"aonang",number:7,name:"Ao Nang",dates:"12–17 ottobre",region:"south",icon:"🏖️",imageClass:"aonang",description:"Peace, laughter & sport: il meritato relax tropicale vista mare.",tags:["🏖️ Spiagge","🚤 Isole","🌅 Tramonti"],coords:[8.0340,98.8390]}
@@ -15,10 +15,10 @@ const destinations = [
 
 /* Tratte indicative. Se conoscerete l'ordine esatto di Chiang Rai, basta cambiare questo array. */
 const routeSegments = [
-  {from:"bangkok",to:"maewang",icon:"🚐"},
+  {from:"bangkok",to:"chiangmai",icon:"✈️"},
   {from:"maewang",to:"chiangmai",icon:"🚐"},
   {from:"chiangmai",to:"chiangrai",icon:"🚂"},
-  {from:"bangkok",to:"surat",icon:"✈️"},
+  {from:"chiangmai",to:"surat",icon:"✈️"},
   {from:"surat",to:"khaosok",icon:"🚐"},
   {from:"khaosok",to:"aonang",icon:"🚐"},
   {from:"aonang",to:"bangkok",icon:"✈️"}
