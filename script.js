@@ -1,6 +1,6 @@
 /* THAILANDIA '26 — V3 */
 
-const departureDate = "2026-10-02T19:00:00";
+const departureDate = "2026-10-01T19:05:00";
 
 /* Dati delle destinazioni. Le coordinate possono essere modificate liberamente. */
 const destinations = [
