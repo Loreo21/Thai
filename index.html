@@ -1,307 +1,73 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f766e">
-    <meta name="description" content="Thailandia 2026 - il nostro viaggio">
-    <title>Thailandia 2026 🇹🇭</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <!-- Leaflet: mappa interattiva gratuita, senza API key -->
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIINfQ3K/1y2M4+0sJx3w0v8Y9V8gX1rJwM="
-        crossorigin=""
-    >
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b756d">
+<title>Thailandia '26 🇹🇭</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 <header class="navbar">
-    <a class="logo" href="#home">THAILANDIA<span>'26</span></a>
-    <button class="menu-toggle" aria-label="Apri menu">☰</button>
-    <nav class="nav-links">
-        <a href="#itinerario">Itinerario</a>
-        <a href="#mappa">Mappa</a>
-        <a href="#dormiamo">Dove dormiamo</a>
-        <a href="#checklist">Checklist</a>
-    </nav>
+  <a class="logo" href="#home">THAILANDIA<span>'26</span></a>
+  <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">☰</button>
+  <nav class="nav-links">
+    <a href="#itinerario">Itinerario</a><a href="#mappa">Mappa</a><a href="#dormiamo">Dove dormiamo</a><a href="#checklist">Checklist</a>
+  </nav>
 </header>
-
 <main id="home">
-
-    <section class="hero">
-        <div class="hero-content">
-            <p class="eyebrow">✈️ IL NOSTRO VIAGGIO</p>
-            <h1>Thailandia<br><em>2026</em></h1>
-            <p class="hero-subtitle">
-                Bangkok, Chiang Mai, Khao Sok e Ao Nang.
-                17 giorni tra templi, giungla e mare.
-            </p>
-
-            <div class="countdown-card">
-                <span class="countdown-label">PARTENZA</span>
-                <div id="countdown" class="countdown">
-                    <div><strong id="days">--</strong><small>giorni</small></div>
-                    <div><strong id="hours">--</strong><small>ore</small></div>
-                    <div><strong id="minutes">--</strong><small>min</small></div>
-                    <div><strong id="seconds">--</strong><small>sec</small></div>
-                </div>
-                <p id="countdown-message">02 ottobre 2026 · ore 19:00</p>
-            </div>
-
-            <a href="#itinerario" class="hero-button">Vedi il viaggio ↓</a>
-        </div>
-    </section>
-
-    <section id="itinerario" class="section">
-        <div class="section-heading centered">
-            <p class="eyebrow">01 — ITINERARIO</p>
-            <h2>Le nostre <em>tappe</em></h2>
-            <p>Il percorso completo, dal nord della Thailandia fino al mare delle Andamane.</p>
-        </div>
-
-        <div class="route-summary">
-            <span>📍 Chiang Rai</span>
-            <span>→</span>
-            <span>🚂 Chiang Mai</span>
-            <span>→</span>
-            <span>✈️ Bangkok</span>
-            <span>→</span>
-            <span>🚐 Surat Thani</span>
-            <span>→</span>
-            <span>🌿 Khao Sok</span>
-            <span>→</span>
-            <span>🏖️ Ao Nang</span>
-            <span>→</span>
-            <span>✈️ Bangkok</span>
-        </div>
-
-        <div class="timeline">
-
-            <article class="timeline-item">
-                <div class="timeline-dot">01</div>
-                <div class="timeline-card">
-                    <div class="place-image north">📍</div>
-                    <div class="place-content">
-                        <span class="date">TAPPA 01</span>
-                        <h3>Chiang Rai</h3>
-                        <p>Il nostro punto di partenza nel nord: natura, cultura e templi.</p>
-                        <div class="tags"><span>🏯 Templi</span><span>🌿 Nord</span><span>🧭 Esplorazione</span></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="timeline-item">
-                <div class="timeline-dot">02</div>
-                <div class="timeline-card">
-                    <div class="place-image chiangmai">🚂</div>
-                    <div class="place-content">
-                        <span class="date">6 — 10 OTTOBRE</span>
-                        <h3>Chiang Mai</h3>
-                        <p>Il cuore storico del nord, tra templi antichi e Terra degli Angeli.</p>
-                        <div class="tags"><span>🏯 Templi</span><span>🌺 Cultura</span><span>🌿 Natura</span></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="timeline-item">
-                <div class="timeline-dot">03</div>
-                <div class="timeline-card">
-                    <div class="place-image bangkok">✈️</div>
-                    <div class="place-content">
-                        <span class="date">2 — 5 OTTOBRE + 17 — 18 OTTOBRE</span>
-                        <h3>Bangkok</h3>
-                        <p>La capitale: caos, street food, templi e l'ultima notte prima del rientro.</p>
-                        <div class="tags"><span>🍜 Street food</span><span>🏯 Templi</span><span>🌃 Capitale</span></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="timeline-item">
-                <div class="timeline-dot">04</div>
-                <div class="timeline-card">
-                    <div class="place-image surat">🚐</div>
-                    <div class="place-content">
-                        <span class="date">TRASFERIMENTO</span>
-                        <h3>Surat Thani</h3>
-                        <p>Tappa di passaggio verso Khao Sok e il sud della Thailandia.</p>
-                        <div class="tags"><span>🚐 Transfer</span><span>🗺️ Sud</span></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="timeline-item">
-                <div class="timeline-dot">05</div>
-                <div class="timeline-card">
-                    <div class="place-image khaosok">🌿</div>
-                    <div class="place-content">
-                        <span class="date">10 — 12 OTTOBRE</span>
-                        <h3>Khao Sok</h3>
-                        <p>Giungla primordiale, umidità e spirito di adattamento. Un'esperienza completamente diversa.</p>
-                        <div class="tags"><span>🌴 Giungla</span><span>🛶 Natura</span><span>🐒 Wildlife</span></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="timeline-item">
-                <div class="timeline-dot">06</div>
-                <div class="timeline-card">
-                    <div class="place-image aonang">🏖️</div>
-                    <div class="place-content">
-                        <span class="date">12 — 17 OTTOBRE</span>
-                        <h3>Ao Nang</h3>
-                        <p>Peace, laughter & sport: il meritato relax tropicale vista mare.</p>
-                        <div class="tags"><span>🏖️ Spiagge</span><span>🚤 Isole</span><span>🌅 Tramonti</span></div>
-                    </div>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <section id="mappa" class="section map-section">
-        <div class="section-heading centered">
-            <p class="eyebrow">02 — MAPPA</p>
-            <h2>Il nostro <em>percorso</em></h2>
-            <p>Clicca sui punti per vedere le tappe. Puoi zoomare e trascinare la mappa.</p>
-        </div>
-
-        <div class="map-layout">
-            <div id="travel-map"></div>
-
-            <aside class="map-legend">
-                <h3>🇹🇭 Tappe</h3>
-                <button class="map-place" data-place="chiangrai"><b>01</b> Chiang Rai</button>
-                <button class="map-place" data-place="chiangmai"><b>02</b> Chiang Mai</button>
-                <button class="map-place" data-place="bangkok"><b>03</b> Bangkok</button>
-                <button class="map-place" data-place="surat"><b>04</b> Surat Thani</button>
-                <button class="map-place" data-place="khaosok"><b>05</b> Khao Sok</button>
-                <button class="map-place" data-place="aonang"><b>06</b> Ao Nang</button>
-                <p class="map-note">La linea tratteggiata rappresenta il percorso generale del viaggio, non la strada precisa da seguire.</p>
-            </aside>
-        </div>
-    </section>
-
-    <section id="dormiamo" class="section sleep-section">
-        <div class="section-heading centered">
-            <p class="eyebrow">03 — DOVE DORMIAMO</p>
-            <h2>I nostri <em>campi base</em> 🛏️</h2>
-            <p>Le sistemazioni riportate nella nostra tabella di viaggio.</p>
-        </div>
-
-        <div class="sleep-list">
-
-            <article class="sleep-card">
-                <div class="sleep-date">2–5<br><span>OTT</span></div>
-                <div class="sleep-icon">🍜</div>
-                <div>
-                    <h3>Bangkok</h3>
-                    <p><strong>Hotel Pho Place</strong></p>
-                    <p>Base tattica per sopravvivere al caos e ai Pad Thai.</p>
-                </div>
-            </article>
-
-            <article class="sleep-card">
-                <div class="sleep-date">5<br><span>OTT</span></div>
-                <div class="sleep-icon">🐘</div>
-                <div>
-                    <h3>Mae Wang</h3>
-                    <p><strong>Bungalow da 6</strong></p>
-                    <p>Svegli alla'alba, i nostri vicini di casa pesano 3 tonnellate.</p>
-                </div>
-            </article>
-
-            <article class="sleep-card">
-                <div class="sleep-date">6–10<br><span>OTT</span></div>
-                <div class="sleep-icon">🌸</div>
-                <div>
-                    <h3>Chiang Mai</h3>
-                    <p><strong>8th House @ Old Town</strong></p>
-                    <p>Il rifugio nel cuore storico della città, tra templi antichi e Terra degli Angeli.</p>
-                </div>
-            </article>
-
-            <article class="sleep-card">
-                <div class="sleep-date">10–12<br><span>OTT</span></div>
-                <div class="sleep-icon">🌴</div>
-                <div>
-                    <h3>Khao Sok</h3>
-                    <p><strong>Silver Cliff Resort</strong></p>
-                    <p>Spirito di adattamento e umidità nella giungla primordiale.</p>
-                </div>
-            </article>
-
-            <article class="sleep-card">
-                <div class="sleep-date">12–17<br><span>OTT</span></div>
-                <div class="sleep-icon">🥥</div>
-                <div>
-                    <h3>Ao Nang</h3>
-                    <p><strong>Peace, laughter & sport</strong></p>
-                    <p>Il meritato relax tropicale vista mare.</p>
-                </div>
-            </article>
-
-            <article class="sleep-card">
-                <div class="sleep-date">17–18<br><span>OTT</span></div>
-                <div class="sleep-icon">🥂</div>
-                <div>
-                    <h3>Bangkok</h3>
-                    <p><strong>Urban Sathorn Hotel</strong></p>
-                    <p>Ultima notte nella capitale... a mezzanotte si sboccia!</p>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <section id="checklist" class="section checklist-section">
-        <div class="section-heading centered">
-            <p class="eyebrow">04 — PRIMA DI PARTIRE</p>
-            <h2>Checklist <em>✈️</em></h2>
-            <p>Le caselle vengono salvate automaticamente nel browser.</p>
-        </div>
-
-        <div class="checklist">
-            <label><input type="checkbox" data-check="passport"><span>Passaporto</span></label>
-            <label><input type="checkbox" data-check="insurance"><span>Assicurazione viaggio</span></label>
-            <label><input type="checkbox" data-check="flights"><span>Biglietti aerei</span></label>
-            <label><input type="checkbox" data-check="hotels"><span>Prenotazioni hotel</span></label>
-            <label><input type="checkbox" data-check="esim"><span>eSIM / SIM</span></label>
-            <label><input type="checkbox" data-check="adapter"><span>Adattatore / caricabatterie</span></label>
-            <label><input type="checkbox" data-check="powerbank"><span>Powerbank</span></label>
-            <label><input type="checkbox" data-check="medicine"><span>Kit da viaggio</span></label>
-        </div>
-
-        <div class="progress-wrap">
-            <div class="progress-top"><span>Preparazione</span><strong id="progress-text">0%</strong></div>
-            <div class="progress-bar"><div id="progress"></div></div>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <div>
-        <strong>THAILANDIA<span>'26</span></strong>
-        <p>Made with ☀️, 🌴 and questionable planning.</p>
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">✈️ IL NOSTRO VIAGGIO</p>
+    <h1>Thailandia<br><em>2026</em></h1>
+    <p class="hero-subtitle">Bangkok, il nord, la giungla e il mare. 18 giorni tra templi, natura, avventure e relax.</p>
+    <div class="countdown-card">
+      <span class="countdown-label">PARTENZA</span>
+      <div class="countdown"><div><strong id="days">--</strong><small>giorni</small></div><div><strong id="hours">--</strong><small>ore</small></div><div><strong id="minutes">--</strong><small>min</small></div><div><strong id="seconds">--</strong><small>sec</small></div></div>
+      <p id="countdown-message">01 ottobre 2026 · ore 21:00</p>
     </div>
-    <a href="#home">↑ Torna su</a>
-</footer>
+    <a class="hero-button" href="#itinerario">Scopri il viaggio ↓</a>
+  </div>
+  <div class="hero-sun">☀</div><div class="hero-palm palm-left">🌴</div><div class="hero-palm palm-right">🌴</div>
+</section>
 
-<!-- Leaflet JS -->
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin="">
-</script>
+<section id="itinerario" class="section">
+  <div class="section-heading centered"><p class="eyebrow">01 — ITINERARIO</p><h2>Le nostre <em>tappe</em></h2><p>Clicca una tappa per vederla anche sulla mappa.</p></div>
+  <div id="route-chips" class="route-chips"></div>
+  <div id="timeline" class="timeline"></div>
+</section>
 
+<section id="mappa" class="section map-section">
+  <div class="section-heading centered"><p class="eyebrow">02 — MAPPA</p><h2>Il nostro <em>percorso</em></h2><p>Zoom, trascinamento, marker e tratte del viaggio. Le linee sono indicative e non rappresentano la strada precisa.</p></div>
+  <div class="map-toolbar"><button class="map-control active" data-filter="all">Tutte</button><button class="map-control" data-filter="north">Nord</button><button class="map-control" data-filter="south">Sud</button><button class="map-control" data-filter="cities">Città</button></div>
+  <div class="map-shell">
+    <div id="travel-map"></div>
+    <aside class="map-panel">
+      <div class="map-panel-header"><div><p class="eyebrow">PERCORSO</p><h3>Le tappe</h3></div><button id="reset-map" class="reset-map" title="Mostra tutto">↗</button></div>
+      <div id="map-place-list" class="map-place-list"></div>
+      <div class="transport-legend"><span>🚂 Treno</span><span>✈️ Aereo</span><span>🚐 Transfer</span></div>
+      <p class="map-note">Mappa basata su OpenStreetMap. Non serve una API key.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="dormiamo" class="section sleep-section">
+  <div class="section-heading centered"><p class="eyebrow">03 — DOVE DORMIAMO</p><h2>I nostri <em>campi base</em> 🛏️</h2><p>Le sistemazioni riportate nella tabella del viaggio.</p></div>
+  <div id="sleep-list" class="sleep-list"></div>
+</section>
+
+<section id="checklist" class="section checklist-section">
+  <div class="section-heading centered"><p class="eyebrow">04 — PRIMA DI PARTIRE</p><h2>Checklist <em>✈️</em></h2><p>Le caselle vengono salvate automaticamente nel browser.</p></div>
+  <div id="checklist-grid" class="checklist"></div>
+  <div class="progress-wrap"><div class="progress-top"><span>Preparazione</span><strong id="progress-text">0%</strong></div><div class="progress-bar"><div id="progress"></div></div></div>
+</section>
+</main>
+<footer><div><strong>THAILANDIA<span>'26</span></strong><p>Made with ☀️, 🌴 and questionable planning.</p></div><a href="#home">↑ Torna su</a></footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

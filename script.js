@@ -1,248 +1,120 @@
-/*
- * THAILANDIA 2026
- */
+/* THAILANDIA '26 — V3 */
 
-// ============================================================
-// 1. COUNTDOWN
-// ============================================================
-// Data reale impostata sulla partenza indicata:
-// 1 ottobre 2026 alle 21:00.
-const departureDate = "2026-10-02T19:00:00";
+const departureDate = "2026-10-01T21:00:00";
 
-function updateCountdown() {
-    const target = new Date(departureDate).getTime();
-    const now = Date.now();
-    const difference = target - now;
-    const message = document.getElementById("countdown-message");
-
-    if (Number.isNaN(target)) {
-        message.textContent = "Data non valida: controlla departureDate in script.js.";
-        return;
-    }
-
-    if (difference <= 0) {
-        document.getElementById("days").textContent = "0";
-        document.getElementById("hours").textContent = "0";
-        document.getElementById("minutes").textContent = "0";
-        document.getElementById("seconds").textContent = "0";
-        message.textContent = "SI PARTE! 🇹🇭";
-        return;
-    }
-
-    const totalSeconds = Math.floor(difference / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    document.getElementById("days").textContent = days;
-    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-    message.textContent = "01 ottobre 2026 · ore 21:00";
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-
-// ============================================================
-// 2. MENU MOBILE
-// ============================================================
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => navLinks.classList.remove("open"));
-});
-
-
-// ============================================================
-// 3. CHECKLIST
-// ============================================================
-const checkboxes = document.querySelectorAll("[data-check]");
-const progress = document.getElementById("progress");
-const progressText = document.getElementById("progress-text");
-
-function updateChecklist() {
-    let completed = 0;
-
-    checkboxes.forEach(box => {
-        const key = `thailandia-check-${box.dataset.check}`;
-        box.checked = localStorage.getItem(key) === "true";
-
-        if (box.checked) completed++;
-    });
-
-    const percentage = Math.round((completed / checkboxes.length) * 100);
-    progress.style.width = `${percentage}%`;
-    progressText.textContent = `${percentage}%`;
-}
-
-checkboxes.forEach(box => {
-    box.addEventListener("change", () => {
-        const key = `thailandia-check-${box.dataset.check}`;
-        localStorage.setItem(key, box.checked);
-        updateChecklist();
-    });
-});
-
-updateChecklist();
-
-
-// ============================================================
-// 4. MAPPA INTERATTIVA
-// ============================================================
-// Coordinate approssimative delle nostre tappe.
-// Per Khao Sok viene usata la zona del parco / lago.
-// La linea è volutamente "generale", come nella mappa originale.
-
-const places = {
-    chiangrai: {
-        name: "Chiang Rai",
-        date: "Tappa nel nord",
-        coords: [19.9105, 99.8406],
-        description: "Partenza nel nord della Thailandia."
-    },
-    chiangmai: {
-        name: "Chiang Mai",
-        date: "6–10 ottobre",
-        coords: [18.7883, 98.9853],
-        description: "Templi antichi, città storica e natura."
-    },
-    bangkok: {
-        name: "Bangkok",
-        date: "2–5 e 17–18 ottobre",
-        coords: [13.7563, 100.5018],
-        description: "La capitale: street food, templi e ultima notte."
-    },
-    surat: {
-        name: "Surat Thani",
-        date: "Trasferimento",
-        coords: [9.1382, 99.3217],
-        description: "Tappa di passaggio verso Khao Sok."
-    },
-    khaosok: {
-        name: "Khao Sok",
-        date: "10–12 ottobre",
-        coords: [8.9120, 98.5290],
-        description: "Giungla e natura del Parco Nazionale di Khao Sok."
-    },
-    aonang: {
-        name: "Ao Nang",
-        date: "12–17 ottobre",
-        coords: [8.0340, 98.8390],
-        description: "Relax tropicale, spiagge e isole."
-    }
-};
-
-// Ordine effettivo del viaggio.
-// Chiang Rai è incluso prima di Chiang Mai, mentre Bangkok compare
-// sia all'inizio sia alla fine del percorso.
-const route = [
-    places.chiangrai.coords,
-    places.chiangmai.coords,
-    places.bangkok.coords,
-    places.surat.coords,
-    places.khaosok.coords,
-    places.aonang.coords,
-    places.bangkok.coords
+/* Dati delle destinazioni. Le coordinate possono essere modificate liberamente. */
+const destinations = [
+  {id:"chiangrai",number:1,name:"Chiang Rai",dates:"Tappa nel nord",region:"north",icon:"📍",imageClass:"north",description:"La tappa più a nord del nostro viaggio, tra templi e paesaggi del nord.",tags:["🏯 Templi","🌿 Nord","🧭 Esplorazione"],coords:[19.9105,99.8406]},
+  {id:"chiangmai",number:2,name:"Chiang Mai",dates:"6–10 ottobre",region:"north",icon:"🚂",imageClass:"chiangmai",description:"Il rifugio nel cuore storico della città, tra templi antichi e Terra degli Angeli.",tags:["🏯 Templi","🌺 Cultura","🌿 Natura"],coords:[18.7883,98.9853]},
+  {id:"maewang",number:3,name:"Mae Wang",dates:"5 ottobre",region:"north",icon:"🐘",imageClass:"maewang",description:"Bungalow da 6. Sveglia all'alba: i nostri vicini di casa pesano 3 tonnellate.",tags:["🐘 Natura","🏡 Bungalow","🌄 Alba"],coords:[18.6165,98.7184]},
+  {id:"bangkok",number:4,name:"Bangkok",dates:"2–5 e 17–18 ottobre",region:"cities",icon:"✈️",imageClass:"bangkok",description:"Base tattica per sopravvivere al caos, allo street food, ai templi e ai Pad Thai.",tags:["🍜 Street food","🏯 Templi","🌃 Capitale"],coords:[13.7563,100.5018]},
+  {id:"surat",number:5,name:"Surat Thani",dates:"Tappa di trasferimento",region:"south",icon:"🚐",imageClass:"surat",description:"Tappa di passaggio verso Khao Sok e il sud della Thailandia.",tags:["🚐 Transfer","🗺️ Sud"],coords:[9.1382,99.3217]},
+  {id:"khaosok",number:6,name:"Khao Sok",dates:"10–12 ottobre",region:"south",icon:"🌿",imageClass:"khaosok",description:"Giungla primordiale, umidità e spirito di adattamento.",tags:["🌴 Giungla","🛶 Natura","🐒 Wildlife"],coords:[8.9120,98.5290]},
+  {id:"aonang",number:7,name:"Ao Nang",dates:"12–17 ottobre",region:"south",icon:"🏖️",imageClass:"aonang",description:"Peace, laughter & sport: il meritato relax tropicale vista mare.",tags:["🏖️ Spiagge","🚤 Isole","🌅 Tramonti"],coords:[8.0340,98.8390]}
 ];
 
-const map = L.map("travel-map", {
-    scrollWheelZoom: true
-});
-
-// Vista iniziale centrata sulla Thailandia.
-map.setView([13.5, 100.0], 6);
-
-// Mappa OpenStreetMap.
-// Non serve una API key.
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
-// Disegna il percorso.
-L.polyline(route, {
-    color: "#0f766e",
-    weight: 3,
-    dashArray: "8 9",
-    opacity: 0.85
-}).addTo(map);
-
-// Marker numerati.
-const markerById = {};
-
-function createNumberIcon(number) {
-    return L.divIcon({
-        className: "",
-        html: `
-            <div style="
-                width:34px;
-                height:34px;
-                border-radius:50%;
-                background:#0f766e;
-                color:white;
-                border:3px solid white;
-                box-shadow:0 3px 10px rgba(0,0,0,.25);
-                display:grid;
-                place-items:center;
-                font-weight:800;
-                font-size:12px;
-            ">${number}</div>
-        `,
-        iconSize: [34, 34],
-        iconAnchor: [17, 17],
-        popupAnchor: [0, -18]
-    });
-}
-
-const markerOrder = [
-    ["chiangrai", 1],
-    ["chiangmai", 2],
-    ["bangkok", 3],
-    ["surat", 4],
-    ["khaosok", 5],
-    ["aonang", 6]
+/* Tratte indicative. Se conoscerete l'ordine esatto di Chiang Rai, basta cambiare questo array. */
+const routeSegments = [
+  {from:"bangkok",to:"maewang",icon:"🚐"},
+  {from:"maewang",to:"chiangmai",icon:"🚐"},
+  {from:"chiangmai",to:"chiangrai",icon:"🚂"},
+  {from:"bangkok",to:"surat",icon:"✈️"},
+  {from:"surat",to:"khaosok",icon:"🚐"},
+  {from:"khaosok",to:"aonang",icon:"🚐"},
+  {from:"aonang",to:"bangkok",icon:"✈️"}
 ];
 
-markerOrder.forEach(([id, number]) => {
-    const place = places[id];
+const accommodations = [
+  {dates:"2–5",city:"Bangkok",icon:"🍜",name:"Hotel Pho Place",text:"Base tattica per sopravvivere al caos e ai Pad Thai."},
+  {dates:"5",city:"Mae Wang",icon:"🐘",name:"Bungalow da 6",text:"Sveglia all'alba, i nostri vicini di casa pesano 3 tonnellate."},
+  {dates:"6–10",city:"Chiang Mai",icon:"🌸",name:"8th House @ Old Town",text:"Il rifugio nel cuore storico della città, tra templi antichi e Terra degli Angeli."},
+  {dates:"10–12",city:"Khao Sok",icon:"🌴",name:"Silver Cliff Resort",text:"Spirito di adattamento e umidità nella giungla primordiale."},
+  {dates:"12–17",city:"Ao Nang",icon:"🥥",name:"Peace, laughter & sport",text:"Il meritato relax tropicale vista mare."},
+  {dates:"17–18",city:"Bangkok",icon:"🥂",name:"Urban Sathorn Hotel",text:"Ultima notte nella capitale... a mezzanotte si sboccia!"}
+];
 
-    const marker = L.marker(place.coords, {
-        icon: createNumberIcon(number)
-    }).addTo(map);
+const checklistItems = [["passport","Passaporto"],["insurance","Assicurazione viaggio"],["flights","Biglietti aerei"],["hotels","Prenotazioni hotel"],["esim","eSIM / SIM"],["adapter","Adattatore / caricabatterie"],["powerbank","Powerbank"],["medicine","Kit da viaggio"]];
 
-    marker.bindPopup(`
-        <div class="popup-title">${place.name}</div>
-        <div class="popup-date">${place.date}</div>
-        <p>${place.description}</p>
-    `);
+const getDestination = id => destinations.find(d => d.id === id);
 
-    markerById[id] = marker;
+/* COUNTDOWN */
+function updateCountdown(){
+  const target = new Date(departureDate).getTime();
+  const diff = target - Date.now();
+  const msg = document.getElementById("countdown-message");
+  if(Number.isNaN(target)){msg.textContent="Data non valida: controlla departureDate in script.js.";return;}
+  if(diff<=0){["days","hours","minutes","seconds"].forEach(id=>document.getElementById(id).textContent="0");msg.textContent="SI PARTE! 🇹🇭";return;}
+  const s=Math.floor(diff/1000);
+  document.getElementById("days").textContent=Math.floor(s/86400);
+  document.getElementById("hours").textContent=String(Math.floor((s%86400)/3600)).padStart(2,"0");
+  document.getElementById("minutes").textContent=String(Math.floor((s%3600)/60)).padStart(2,"0");
+  document.getElementById("seconds").textContent=String(s%60).padStart(2,"0");
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+
+/* MENU */
+const menuToggle=document.querySelector(".menu-toggle"),navLinks=document.querySelector(".nav-links");
+menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));});
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
+
+/* ITINERARIO */
+const displayOrder=["chiangrai","chiangmai","bangkok","maewang","surat","khaosok","aonang"];
+const timeline=document.getElementById("timeline"),chips=document.getElementById("route-chips");
+displayOrder.forEach(id=>{
+  const d=getDestination(id); if(!d)return;
+  const item=document.createElement("article"); item.className="timeline-item"; item.dataset.destination=id;
+  item.innerHTML=`<div class="timeline-dot">${String(d.number).padStart(2,"0")}</div><div class="timeline-card"><div class="place-image ${d.imageClass}">${d.icon}</div><div class="place-content"><span class="date">${d.dates}</span><h3>${d.name}</h3><p>${d.description}</p><div class="tags">${d.tags.map(t=>`<span>${t}</span>`).join("")}</div><button class="go-to-map" type="button" data-go-map="${d.id}">🗺️ Vedi sulla mappa</button></div></div>`;
+  timeline.appendChild(item);
+  const chip=document.createElement("button"); chip.className="route-chip";chip.type="button";chip.dataset.goMap=d.id;chip.textContent=`${d.icon} ${d.name}`;chips.appendChild(chip);
 });
 
-// Adatta automaticamente la mappa al percorso.
-map.fitBounds(route, {
-    padding: [35, 35]
-});
+/* ALLOGGI */
+const sleepList=document.getElementById("sleep-list");
+accommodations.forEach(a=>{const card=document.createElement("article");card.className="sleep-card";card.innerHTML=`<div class="sleep-date">${a.dates}<br><span>OTT</span></div><div class="sleep-icon">${a.icon}</div><div><h3>${a.city}</h3><p><strong>${a.name}</strong></p><p>${a.text}</p></div>`;sleepList.appendChild(card);});
 
-// Cliccando una destinazione nella legenda,
-// la mappa vola sul punto corrispondente.
-document.querySelectorAll(".map-place").forEach(button => {
-    button.addEventListener("click", () => {
-        const id = button.dataset.place;
-        const place = places[id];
+/* CHECKLIST */
+const checklistGrid=document.getElementById("checklist-grid");
+checklistItems.forEach(([id,label])=>{const l=document.createElement("label");l.innerHTML=`<input type="checkbox" data-check="${id}"><span>${label}</span>`;checklistGrid.appendChild(l);});
+const boxes=document.querySelectorAll("[data-check]"),progress=document.getElementById("progress"),progressText=document.getElementById("progress-text");
+function updateChecklist(){let done=0;boxes.forEach(b=>{b.checked=localStorage.getItem(`thai-check-${b.dataset.check}`)==="true";if(b.checked)done++;});const p=Math.round(done/boxes.length*100);progress.style.width=`${p}%`;progressText.textContent=`${p}%`;}
+boxes.forEach(b=>b.addEventListener("change",()=>{localStorage.setItem(`thai-check-${b.dataset.check}`,String(b.checked));updateChecklist();}));updateChecklist();
 
-        map.flyTo(place.coords, 9, {
-            duration: 1.2
-        });
+/* MAPPA */
+let map=null,mapReady=false;const markers={},routeLayers=[],transportMarkers=[];
+function destinationIcon(d,active=false){return L.divIcon({className:"travel-marker",html:`<div class="travel-marker-inner ${active?"active":""}">${d.number}</div>`,iconSize:[38,38],iconAnchor:[19,19],popupAnchor:[0,-19]});}
+function transportIcon(icon){return L.divIcon({className:"transport-wrapper",html:`<div class="transport-marker">${icon}</div>`,iconSize:[30,30],iconAnchor:[15,15]});}
+function popup(d){return `<div class="popup-title">${d.icon} ${d.name}</div><div class="popup-date">${d.dates}</div><div class="popup-text">${d.description}</div><button class="popup-button" data-popup="${d.id}">Vedi la tappa</button>`;}
 
-        markerById[id].openPopup();
-    });
-});
+function renderMapList(){const list=document.getElementById("map-place-list");destinations.forEach(d=>{const b=document.createElement("button");b.type="button";b.className="map-place";b.dataset.destination=d.id;b.dataset.region=d.region;b.innerHTML=`<span class="map-number">${String(d.number).padStart(2,"0")}</span><span><span class="map-place-name">${d.icon} ${d.name}</span><span class="map-place-date">${d.dates}</span></span><span class="map-transport">${d.icon}</span>`;b.addEventListener("click",()=>focusDestination(d.id));list.appendChild(b);});}
+renderMapList();
+
+function initializeMap(){
+  if(mapReady){setTimeout(()=>map.invalidateSize(),50);return;}
+  if(typeof L==="undefined"){console.error("Leaflet non è stato caricato.");return;}
+  map=L.map("travel-map",{zoomControl:true,scrollWheelZoom:true,dragging:true,touchZoom:true,doubleClickZoom:true});
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{minZoom:5,maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+  createMarkers();createRoutes();mapReady=true;map.invalidateSize();setTimeout(()=>{map.invalidateSize();fitAll();},100);
+}
+function createMarkers(){destinations.forEach(d=>{const m=L.marker(d.coords,{icon:destinationIcon(d)}).addTo(map);m.bindPopup(popup(d),{autoPan:true,keepInView:true});m.on("click",()=>selectDestination(d.id));markers[d.id]=m;});}
+function createRoutes(){routeSegments.forEach(s=>{const a=getDestination(s.from),b=getDestination(s.to);if(!a||!b)return;const line=L.polyline([a.coords,b.coords],{color:"#0b756d",weight:3,opacity:.82,dashArray:"7 9",lineCap:"round"}).addTo(map);line.bindTooltip(`${s.icon} ${a.name} → ${b.name}`,{sticky:true});routeLayers.push(line);const mid=[(a.coords[0]+b.coords[0])/2,(a.coords[1]+b.coords[1])/2];transportMarkers.push(L.marker(mid,{icon:transportIcon(s.icon),interactive:false}).addTo(map));});}
+function fitAll(){if(!mapReady)return;const bounds=L.latLngBounds(destinations.map(d=>d.coords));if(bounds.isValid())map.fitBounds(bounds,{padding:[35,35],maxZoom:7});}
+function selectDestination(id){document.querySelectorAll(".map-place").forEach(b=>b.classList.toggle("selected",b.dataset.destination===id));destinations.forEach(d=>{if(markers[d.id])markers[d.id].setIcon(destinationIcon(d,d.id===id));});}
+function focusDestination(id){if(!mapReady)initializeMap();const d=getDestination(id),m=markers[id];if(!d||!m||!map)return;selectDestination(id);map.flyTo(d.coords,9,{duration:.8});setTimeout(()=>m.openPopup(),450);}
+
+/* Filtri */
+document.querySelectorAll(".map-control").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".map-control").forEach(b=>b.classList.remove("active"));button.classList.add("active");if(!mapReady)return;const filter=button.dataset.filter;destinations.forEach(d=>{const visible=filter==="all"||d.region===filter;if(visible)markers[d.id].addTo(map);else markers[d.id].removeFrom(map);});}));
+
+document.getElementById("reset-map").addEventListener("click",()=>{document.querySelectorAll(".map-control").forEach(b=>b.classList.toggle("active",b.dataset.filter==="all"));destinations.forEach(d=>markers[d.id]&&markers[d.id].addTo(map));document.querySelectorAll(".map-place").forEach(b=>b.classList.remove("selected"));fitAll();});
+
+/* Collegamento itinerario → mappa */
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go-map]");if(!b)return;document.getElementById("mappa").scrollIntoView({behavior:"smooth"});setTimeout(()=>focusDestination(b.dataset.goMap),500);});
+
+/* Collegamento popup → scheda */
+document.addEventListener("click",e=>{const b=e.target.closest("[data-popup]");if(!b)return;const card=document.querySelector(`.timeline-item[data-destination="${b.dataset.popup}"]`);if(card)card.scrollIntoView({behavior:"smooth",block:"center"});});
+
+/* Inizializzazione quando la sezione è vicina alla viewport. */
+const mapSection=document.getElementById("mappa");
+if("IntersectionObserver" in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){initializeMap();observer.disconnect();}},{rootMargin:"300px"});observer.observe(mapSection);}else initializeMap();
+
+window.addEventListener("resize",()=>{if(!map)return;clearTimeout(window.__mapResize);window.__mapResize=setTimeout(()=>map.invalidateSize(),150);});
+window.addEventListener("load",()=>{if(map)map.invalidateSize();});
