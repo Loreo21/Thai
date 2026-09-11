@@ -58,7 +58,7 @@ menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("o
 document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
 
 /* ITINERARIO */
-const displayOrder=["chiangrai","chiangmai","bangkok","maewang","surat","khaosok","aonang"];
+const displayOrder=["bangkok","maewang","chiangrai","chiangmai","surat","khaosok","aonang"];
 const timeline=document.getElementById("timeline"),chips=document.getElementById("route-chips");
 displayOrder.forEach(id=>{
   const d=getDestination(id); if(!d)return;
