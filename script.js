@@ -33,7 +33,7 @@ const accommodations = [
   {dates:"17–18",city:"Bangkok",icon:"🥂",name:"Urban Sathorn Hotel",text:"Ultima notte nella capitale... a mezzanotte si sboccia!"}
 ];
 
-const checklistItems = [["passport","Passaporto"],["insurance","Assicurazione viaggio"],["flights","Biglietti aerei"],["hotels","Prenotazioni hotel"],["esim","eSIM / SIM"],["adapter","Adattatore / caricabatterie"],["powerbank","Powerbank"],["medicine","Kit da viaggio"]];
+const checklistItems = [["passport","Passaporto"],["insurance","Assicurazione viaggio"],["flights","Biglietti aerei"],["hotels","Prenotazioni hotel"],["esim","eSIM / SIM"],["adapter","Adattatore / caricabatterie"],["powerbank","Maria"],["medicine","Vaccini"]];
 
 const getDestination = id => destinations.find(d => d.id === id);
 
