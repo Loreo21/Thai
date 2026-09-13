@@ -18,24 +18,34 @@ const destinations = [
 // ============================================================
 
 const pointsOfInterest = [
-  {id:"grand-palace", name:"The Grand Palace & Wat Phra Kaew",category:"tempio",icon:"🏯",description:"Non un semplice tempio, ma un’intera cittadella fortificata",coords:[13.749958362373388,100.49158314976079]},
-  {id:"wat-pho",name:"Wat Pho", category:"tempio",icon:"🏯",description:"Il tempio ospita una statua dorata gigantesca", coords:[13.746425585993517,100.49123359275178]},
+  { id:"grand-palace", name:"The Grand Palace & Wat Phra Kaew",category:"tempio",icon:"🏯",description:"Non un semplice tempio, ma un’intera cittadella fortificata",coords:[13.749958362373388,100.49158314976079]},
+  { id:"wat-pho",name:"Wat Pho", category:"tempio",icon:"🏯",description:"Il tempio ospita una statua dorata gigantesca", coords:[13.746425585993517,100.49123359275178]},
   { id:"wat-arun", name:"Wat Arun", category:"tempio", icon:"🏯", description:"Meraviglia architettonica", coords:[13.74377008118056,100.48888915513116] },
-  {  id:"wat-paknam",  name:"Wat Paknam Phasi Charoen",  category:"tempio",  icon:"🏯",  description:"Buddha gigante",  coords:[13.721775650225645,100.47035387520229]},
+  { id:"wat-paknam",  name:"Wat Paknam Phasi Charoen",  category:"tempio",  icon:"🏯",  description:"Buddha gigante",  coords:[13.721775650225645,100.47035387520229]},
   { id:"wat-samphran", name:"Wat Samphran", category:"tempio", icon:"🏯", description:"Il tempio del Drago", coords:[13.735826307711193,100.21534748252833]},
   { id:"ayutthaya", name:"Ayutthaya", category:"tempio", icon:"🏯", description:"Antica capitale", coords:[14.356580234863477,100.5829457777426] },
   { id:"lumphini", name:"LUMPHINI PARK", category:"parco", icon:"🌳", description:"Oasi nella giungla d'asfalto", coords:[13.731469762152459,100.54169840019695] },
   { id:"ancient-city", name:"Ancient City", category:"parco", icon:"🌳", description:"Parco-museo", coords:[13.539580365796427,100.62322996326446]},
-  {id:"bang-krachao", name:"Bang Krachao", category:"parco", icon:"🌳", description:"Polmone verde", coords:[13.696793252750115,100.5642226452388] },
+  { id:"bang-krachao", name:"Bang Krachao", category:"parco", icon:"🌳", description:"Polmone verde", coords:[13.696793252750115,100.5642226452388] },
   { id:"dusit-central-park", name:"Dusit Central Park", category:"parco", icon:"🌳", description:"Giardino futuristico", coords:[13.728645324127115,100.53752795202692]},
   { id:"icon-siam", name:"Icon Siam", category:"shopping", icon:"🛍️", description:"Moderno e lussuoso", coords:[13.726185704554677,100.50997955022778]},
-  {  id:"terminal-21", name:"Terminal 21 Asok", category:"shopping", icon:"🛍️", description:"Multiculturale", coords:[13.737990638183101,100.56042055730217] },
+  { id:"terminal-21", name:"Terminal 21 Asok", category:"shopping", icon:"🛍️", description:"Multiculturale", coords:[13.737990638183101,100.56042055730217] },
   { id:"mbk", name:"MBK Center", category:"shopping", icon:"🛍️", description:"Mercato storico", coords:[13.744827124932158,100.52992381391117] },
-  {id:"maeklong", name:"Maeklong Railway Market", category:"mercato", icon:"🚂", description:"Occhio al treno", coords:[13.407437748337097,99.99918094413748]},
+  { id:"maeklong", name:"Maeklong Railway Market", category:"mercato", icon:"🚂", description:"Occhio al treno", coords:[13.407437748337097,99.99918094413748]},
   { id:"damnoen-saduak", name:"Damnoen Saduak", category:"mercato", icon:"🛶", description:"Mercato galleggiante", coords:[13.520183763672543,99.958601623242]},
   { id:"amphawa", name:"AMPHAWA", category:"mercato",  icon:"🍜",description:"Street food sull'acqua", coords:[13.42527750583426,99.9549225705168]},
   { id:"chinatown", name:"CHINATOWN", category:"nightlife", icon:"🌃", description:"Labirinto al neon", coords:[13.737392400944513,100.51294952915383] },
-  { id:"khao-san", name:"Khao San", category:"streetfood", icon:"🍜", description:"Insetti?", coords:[13.758920577309246,100.49724706992998]}
+  { id:"khao-san", name:"Khao San", category:"streetfood", icon:"🍜", description:"Insetti?", coords:[13.758920577309246,100.49724706992998]},
+  { id:"tha-phae-gate", name:"Tha Phae Gate", category:"entrydoor",icon:"🏯",description:"Antica via d'accesso", coords:[18.787824861675983, 98.99336769890905]},
+  { id:"chang-puak-gate", name:"Chang Puak Gate",category: "entrydoor", icon:"🏯",description:" Antica via d'accesso", coords:[18.795549341688783, 98.98655910515735]},
+  { id:"wat-chedi-luang",name:"Wat Chedi Luang", category: "temple",icon:"🏯",description:"Mastodontica piramide di mattoni",coords:[18.786964603817076, 98.9865969279568]},
+  { id:"wat-phra-singh", name:"Wat Phra Singh",category:"temple",icon:"🏯",description:"Tempio più curato e decorato",coords:[18.788559872127443, 98.98198567957849]},
+  { id:"wat-sri-suphan", name:"Wat Sri Suphan",category:"temple",icon:"🏯",description:"Tempio ricoperto di lastre d'argento",coords:[18.778656644361792, 98.98360397137036]},
+  { id:"night-bazaar", name:"Night Bazaar",category:"nightlife", icon:"🌃",description:"Labirinto di luci e bancarelle",coords:[18.78598411881089, 99.00070920304864]},
+  { id:"dantewada-land-of-angels", name:"Dantewada Land of Angels", category:"parco", icon:"🌳", description:"Terra degli angeli", coords:[19.123223336964536, 98.9420461341175]},
+  { id:"buatong-waterfall", name:"Buatong Waterfall", category:"parco", icon:"🌳", description:"cascate appiccicose", coords:[19.068896999346254, 99.07909444904108]},
+  { id:"doi-suthep", name:"Doi Suthep",category:"temple",icon:"🏯",description:"Tempio delle nuvole",coords:[18.816387994059635, 98.89177273148617]},
+  { id:"doi-inthanon", name:"Doi Inthanon",category:"temple",icon:"🏯",description:"Il tetto della Thailandia",coords:[18.588001513741112, 98.48706119288231]},
 ];
 
 
