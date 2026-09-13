@@ -1,4 +1,4 @@
-/* THAILANDIA '26 — V3 */
+  /* THAILANDIA '26 — V3 */
 
 const departureDate = "2026-10-01T19:05:00";
 
@@ -27,7 +27,7 @@ const pointsOfInterest = [
   { id:"lumphini", name:"LUMPHINI PARK", category:"parco", icon:"🌳", description:"Oasi nella giungla d'asfalto", coords:[13.731469762152459,100.54169840019695] },
   { id:"ancient-city", name:"Ancient City", category:"parco", icon:"🌳", description:"Parco-museo", coords:[13.539580365796427,100.62322996326446]},
   {id:"bang-krachao", name:"Bang Krachao", category:"parco", icon:"🌳", description:"Polmone verde", coords:[13.696793252750115,100.5642226452388] },
-  { id:"dusit-central-park", name:"Dusit Central Park", category:"parco", icon:"🌳", description:"Giardino futuristico", coords:[13.728645324127115,100.53752795202692],
+  { id:"dusit-central-park", name:"Dusit Central Park", category:"parco", icon:"🌳", description:"Giardino futuristico", coords:[13.728645324127115,100.53752795202692]},
   { id:"icon-siam", name:"Icon Siam", category:"shopping", icon:"🛍️", description:"Moderno e lussuoso", coords:[13.726185704554677,100.50997955022778]},
   {  id:"terminal-21", name:"Terminal 21 Asok", category:"shopping", icon:"🛍️", description:"Multiculturale", coords:[13.737990638183101,100.56042055730217] },
   { id:"mbk", name:"MBK Center", category:"shopping", icon:"🛍️", description:"Mercato storico", coords:[13.744827124932158,100.52992381391117] },
