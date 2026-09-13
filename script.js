@@ -13,6 +13,32 @@ const destinations = [
   {id:"aonang",number:7,name:"Ao Nang",dates:"12–17 ottobre",region:"south",icon:"🏖️",imageClass:"aonang",description:"Peace, laughter & sport: il meritato relax tropicale vista mare.",tags:["🏖️ Spiagge","🚤 Isole","🌅 Tramonti"],coords:[8.0340,98.8390]}
 ];
 
+// ============================================================
+// PUNTI DI INTERESSE
+// ============================================================
+
+const pointsOfInterest = [
+  {id:"grand-palace", name:"The Grand Palace & Wat Phra Kaew",category:"tempio",icon:"🏯",description:"Non un semplice tempio, ma un’intera cittadella fortificata",coords:[13.749958362373388,100.49158314976079]},
+  {id:"wat-pho",name:"Wat Pho", category:"tempio",icon:"🏯",description:"Il tempio ospita una statua dorata gigantesca", coords:[13.746425585993517,100.49123359275178]},
+  { id:"wat-arun", name:"Wat Arun", category:"tempio", icon:"🏯", description:"Meraviglia architettonica", coords:[13.74377008118056,100.48888915513116] },
+  {  id:"wat-paknam",  name:"Wat Paknam Phasi Charoen",  category:"tempio",  icon:"🏯",  description:"Buddha gigante",  coords:[13.721775650225645,100.47035387520229]},
+  { id:"wat-samphran", name:"Wat Samphran", category:"tempio", icon:"🏯", description:"Il tempio del Drago", coords:[13.735826307711193,100.21534748252833]},
+  { id:"ayutthaya", name:"Ayutthaya", category:"tempio", icon:"🏯", description:"Antica capitale", coords:[14.356580234863477,100.5829457777426] },
+  { id:"lumphini", name:"LUMPHINI PARK", category:"parco", icon:"🌳", description:"Oasi nella giungla d'asfalto", coords:[13.731469762152459,100.54169840019695] },
+  { id:"ancient-city", name:"Ancient City", category:"parco", icon:"🌳", description:"Parco-museo", coords:[13.539580365796427,100.62322996326446]},
+  {id:"bang-krachao", name:"Bang Krachao", category:"parco", icon:"🌳", description:"Polmone verde", coords:[13.696793252750115,100.5642226452388] },
+  { id:"dusit-central-park", name:"Dusit Central Park", category:"parco", icon:"🌳", description:"Giardino futuristico", coords:[13.728645324127115,100.53752795202692],
+  { id:"icon-siam", name:"Icon Siam", category:"shopping", icon:"🛍️", description:"Moderno e lussuoso", coords:[13.726185704554677,100.50997955022778]},
+  {  id:"terminal-21", name:"Terminal 21 Asok", category:"shopping", icon:"🛍️", description:"Multiculturale", coords:[13.737990638183101,100.56042055730217] },
+  { id:"mbk", name:"MBK Center", category:"shopping", icon:"🛍️", description:"Mercato storico", coords:[13.744827124932158,100.52992381391117] },
+  {id:"maeklong", name:"Maeklong Railway Market", category:"mercato", icon:"🚂", description:"Occhio al treno", coords:[13.407437748337097,99.99918094413748]},
+  { id:"damnoen-saduak", name:"Damnoen Saduak", category:"mercato", icon:"🛶", description:"Mercato galleggiante", coords:[13.520183763672543,99.958601623242]},
+  { id:"amphawa", name:"AMPHAWA", category:"mercato",  icon:"🍜",description:"Street food sull'acqua", coords:[13.42527750583426,99.9549225705168]},
+  { id:"chinatown", name:"CHINATOWN", category:"nightlife", icon:"🌃", description:"Labirinto al neon", coords:[13.737392400944513,100.51294952915383] },
+  { id:"khao-san", name:"Khao San", category:"streetfood", icon:"🍜", description:"Insetti?", coords:[13.758920577309246,100.49724706992998]}
+];
+
+
 /* Tratte indicative. Se conoscerete l'ordine esatto di Chiang Rai, basta cambiare questo array. */
 const routeSegments = [
   {from:"bangkok",to:"maewang",icon:"✈️"},
@@ -82,6 +108,7 @@ boxes.forEach(b=>b.addEventListener("change",()=>{localStorage.setItem(`thai-che
 /* MAPPA */
 let map=null,mapReady=false;const markers={},routeLayers=[],transportMarkers=[];
 function destinationIcon(d,active=false){return L.divIcon({className:"travel-marker",html:`<div class="travel-marker-inner ${active?"active":""}">${d.number}</div>`,iconSize:[38,38],iconAnchor:[19,19],popupAnchor:[0,-19]});}
+function poiIcon(poi){return L.divIcon({className:"poi-marker",html:`<div class="poi-marker-inner">${poi.icon}</div>`,iconSize:[32,32],iconAnchor:[16,16],popupAnchor:[0,-16]});}
 function transportIcon(icon){return L.divIcon({className:"transport-wrapper",html:`<div class="transport-marker">${icon}</div>`,iconSize:[30,30],iconAnchor:[15,15]});}
 function popup(d){return `<div class="popup-title">${d.icon} ${d.name}</div><div class="popup-date">${d.dates}</div><div class="popup-text">${d.description}</div><button class="popup-button" data-popup="${d.id}">Vedi la tappa</button>`;}
 
@@ -93,9 +120,10 @@ function initializeMap(){
   if(typeof L==="undefined"){console.error("Leaflet non è stato caricato.");return;}
   map=L.map("travel-map",{zoomControl:true,scrollWheelZoom:true,dragging:true,touchZoom:true,doubleClickZoom:true});
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{minZoom:5,maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
-  createMarkers();createRoutes();mapReady=true;map.invalidateSize();setTimeout(()=>{map.invalidateSize();fitAll();},100);
+  createMarkers();createPOIMarkers();createRoutes();mapReady=true;map.invalidateSize();setTimeout(()=>{map.invalidateSize();fitAll();},100);
 }
 function createMarkers(){destinations.forEach(d=>{const m=L.marker(d.coords,{icon:destinationIcon(d)}).addTo(map);m.bindPopup(popup(d),{autoPan:true,keepInView:true});m.on("click",()=>selectDestination(d.id));markers[d.id]=m;});}
+function createPOIMarkers(){pointsOfInterest.forEach(poi=>{const marker=L.marker(poi.coords,{icon:poiIcon(poi)}).addTo(map);marker.bindPopup(`<div class="popup-title">${poi.icon} ${poi.name}</div><div class="popup-date">${poi.category}</div><div class="popup-text">${poi.description}</div>`);});}
 function createRoutes(){routeSegments.forEach(s=>{const a=getDestination(s.from),b=getDestination(s.to);if(!a||!b)return;const line=L.polyline([a.coords,b.coords],{color:"#0b756d",weight:3,opacity:.82,dashArray:"7 9",lineCap:"round"}).addTo(map);line.bindTooltip(`${s.icon} ${a.name} → ${b.name}`,{sticky:true});routeLayers.push(line);const mid=[(a.coords[0]+b.coords[0])/2,(a.coords[1]+b.coords[1])/2];transportMarkers.push(L.marker(mid,{icon:transportIcon(s.icon),interactive:false}).addTo(map));});}
 function fitAll(){if(!mapReady)return;const bounds=L.latLngBounds(destinations.map(d=>d.coords));if(bounds.isValid())map.fitBounds(bounds,{padding:[35,35],maxZoom:7});}
 function selectDestination(id){document.querySelectorAll(".map-place").forEach(b=>b.classList.toggle("selected",b.dataset.destination===id));destinations.forEach(d=>{if(markers[d.id])markers[d.id].setIcon(destinationIcon(d,d.id===id));});}
