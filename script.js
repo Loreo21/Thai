@@ -32,18 +32,18 @@ const pointsOfInterest = [
   { id:"terminal-21", name:"Terminal 21 Asok", category:"shopping", icon:"🛍️", description:"Multiculturale", coords:[13.737990638183101,100.56042055730217] },
   { id:"mbk", name:"MBK Center", category:"shopping", icon:"🛍️", description:"Mercato storico", coords:[13.744827124932158,100.52992381391117] },
   { id:"maeklong", name:"Maeklong Railway Market", category:"mercato", icon:"🚂", description:"Occhio al treno", coords:[13.407437748337097,99.99918094413748]},
-  { id:"damnoen-saduak", name:"Damnoen Saduak", category:"mercato", icon:"🛶", description:"Mercato galleggiante", coords:[13.520183763672543,99.958601623242]},
-  { id:"amphawa", name:"Amphawa", category:"mercato",  icon:"🍜",description:"Street food sull'acqua", coords:[13.42527750583426,99.9549225705168]},
+  { id:"damnoen-saduak", name:"Damnoen Saduak", category:"food", icon:"🛶", description:"Mercato galleggiante", coords:[13.520183763672543,99.958601623242]},
+  { id:"amphawa", name:"Amphawa", category:"food",  icon:"🍜",description:"Street food sull'acqua", coords:[13.42527750583426,99.9549225705168]},
   { id:"chinatown", name:"Chinatown", category:"nightlife", icon:"🌃", description:"Labirinto al neon", coords:[13.737392400944513,100.51294952915383] },
-  { id:"khao-san", name:"Khao San", category:"streetfood", icon:"🍜", description:"Insetti?", coords:[13.758920577309246,100.49724706992998]},
+  { id:"khao-san", name:"Khao San", category:"food", icon:"🍜", description:"Insetti?", coords:[13.758920577309246,100.49724706992998]},
   { id:"tha-phae-gate", name:"Tha Phae Gate", category:"entrydoor",icon:"🏯",description:"Antica via d'accesso", coords:[18.787824861675983, 98.99336769890905]},
   { id:"chang-puak-gate", name:"Chang Puak Gate",category: "entrydoor", icon:"🏯",description:" Antica via d'accesso", coords:[18.795549341688783, 98.98655910515735]},
   { id:"wat-chedi-luang",name:"Wat Chedi Luang", category: "tempio",icon:"🏯",description:"Mastodontica piramide di mattoni",coords:[18.786964603817076, 98.9865969279568]},
   { id:"wat-phra-singh", name:"Wat Phra Singh",category:"tempio",icon:"🏯",description:"Tempio più curato e decorato",coords:[18.788559872127443, 98.98198567957849]},
   { id:"wat-sri-suphan", name:"Wat Sri Suphan",category:"tempio",icon:"🏯",description:"Tempio ricoperto di lastre d'argento",coords:[18.778656644361792, 98.98360397137036]},
   { id:"night-bazaar", name:"Night Bazaar",category:"nightlife", icon:"🌃",description:"Labirinto di luci e bancarelle",coords:[18.78598411881089, 99.00070920304864]},
-  { id:"dantewada-land-of-angels", name:"Dantewada Land of Angels", category:"parco", icon:"🌳", description:"Terra degli angeli", coords:[19.123223336964536, 98.9420461341175]},
-  { id:"buatong-waterfall", name:"Buatong Waterfall", category:"parco", icon:"🌳", description:"Cascate appiccicose", coords:[19.068896999346254, 99.07909444904108]},
+  { id:"dantewada-land-of-angels", name:"Dantewada Land of Angels", category:"cascata", icon:"🌳", description:"Terra degli angeli", coords:[19.123223336964536, 98.9420461341175]},
+  { id:"buatong-waterfall", name:"Buatong Waterfall", category:"cascata", icon:"🌳", description:"Cascate appiccicose", coords:[19.068896999346254, 99.07909444904108]},
   { id:"doi-suthep", name:"Doi Suthep",category:"tempio",icon:"🏯",description:"Tempio delle nuvole",coords:[18.816387994059635, 98.89177273148617]},
   { id:"doi-inthanon", name:"Doi Inthanon",category:"tempio",icon:"🏯",description:"Il tetto della Thailandia",coords:[18.588001513741112, 98.48706119288231]},
   { id:"wat-rong-khun", name:"Wat Rong Khun",category:"tempio",icon:"🏯",description:"Tempio bianco",coords:[19.82428, 99.76319]},
@@ -144,14 +144,17 @@ function filterMap(category){if(category==="destinations"){destinations.forEach(
     if(category==="all"){visible=true;
     }
     else if(category==="food"){
-      visible=
-        marker.poiCategory==="streetfood" ||
-        marker.poiCategory==="mercato";
+      visible=marker.poiCategory==="food" || marker.poiCategory==="mercato";
     }
-    else{
+    else if(category==="shopping"){
+      visible=marker.poiCategory==="nightlife" ||marker.poiCategory==="shopping";
+    }else if(category==="temple"{
+      visible=marker.poiCategory==="tempio"||marker.poiCategory==="entrydoor";
+    }else if(category==="nature"){
+      visible=marker.poiCategory==="parco" || visible=marker.poiCategory==="lago" ||visible=marker.poiCategory==="terme" || visible=marker.poiCategory==="cascata";
+    }else{
       visible=marker.poiCategory===category;
-    }
-
+    }                                                                                                                                                                                                                                                                                                     
     if(visible){
       marker.addTo(map);
     }else{
