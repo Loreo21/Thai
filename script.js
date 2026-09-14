@@ -142,15 +142,14 @@ function createMarkers(){destinations.forEach(d=>{const m=L.marker(d.coords,{ico
 function createPOIMarkers(){pointsOfInterest.forEach(poi=>{const marker=L.marker(poi.coords,{icon:poiIcon(poi),zIndexOffset:0}).addTo(map);marker.bindPopup(`<div class="popup-title">${poi.icon} ${poi.name}</div><div class="popup-date">${poi.category}</div><div class="popup-text">${poi.description}</div>`);marker.poiCategory=poi.category;poiMarkers.push(marker)});}
 function filterMap(category){if(category==="destinations"){destinations.forEach(d=>{if(markers[d.id]){markers[d.id].addTo(map);}});poiMarkers.forEach(marker=>{marker.removeFrom(map);});return;}destinations.forEach(d=>{if(markers[d.id]){markers[d.id].addTo(map);}});poiMarkers.forEach(marker=>{let visible=false;
     if(category==="all"){visible=true;
-    }
-    else if(category==="food"){
+    }else if(category==="food"){
       visible=marker.poiCategory==="food" || marker.poiCategory==="mercato";
     }else if(category==="shopping"){
       visible=marker.poiCategory==="nightlife" ||marker.poiCategory==="shopping";
     }else if(category==="temple"){
       visible=marker.poiCategory==="tempio"||marker.poiCategory==="entrydoor";
     }else if(category==="nature"){
-      visible=marker.poiCategory==="parco" || visible=marker.poiCategory==="lago" ||visible=marker.poiCategory==="terme" || visible=marker.poiCategory==="cascata";
+      visible=marker.poiCategory==="parco" || marker.poiCategory==="lago" ||marker.poiCategory==="terme" || marker.poiCategory==="cascata";
     }else{
       visible=marker.poiCategory===category;
     }                                                                                                                                                                                                                                                                                                     
