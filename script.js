@@ -122,7 +122,7 @@ function updateChecklist(){let done=0;boxes.forEach(b=>{b.checked=localStorage.g
 boxes.forEach(b=>b.addEventListener("change",()=>{localStorage.setItem(`thai-check-${b.dataset.check}`,String(b.checked));updateChecklist();}));updateChecklist();
 
 /* MAPPA */
-let map=null,mapReady=false;const markers={},const poiMarkers=[],routeLayers=[],transportMarkers=[];
+let map=null,mapReady=false;const markers={},poiMarkers=[],routeLayers=[],transportMarkers=[];
 function destinationIcon(d,active=false){return L.divIcon({className:"travel-marker",html:`<div class="travel-marker-inner ${active?"active":""}">${d.number}</div>`,iconSize:[38,38],iconAnchor:[19,19],popupAnchor:[0,-19]});}
 function poiIcon(poi){return L.divIcon({className:"poi-marker",html:`<div class="poi-marker-inner">${poi.icon}</div>`,iconSize:[32,32],iconAnchor:[16,16],popupAnchor:[0,-16]});}
 function transportIcon(icon){return L.divIcon({className:"transport-wrapper",html:`<div class="transport-marker">${icon}</div>`,iconSize:[30,30],iconAnchor:[15,15]});}
