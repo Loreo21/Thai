@@ -145,10 +145,9 @@ function filterMap(category){if(category==="destinations"){destinations.forEach(
     }
     else if(category==="food"){
       visible=marker.poiCategory==="food" || marker.poiCategory==="mercato";
-    }
-    else if(category==="shopping"){
+    }else if(category==="shopping"){
       visible=marker.poiCategory==="nightlife" ||marker.poiCategory==="shopping";
-    }else if(category==="temple"{
+    }else if(category==="temple"){
       visible=marker.poiCategory==="tempio"||marker.poiCategory==="entrydoor";
     }else if(category==="nature"){
       visible=marker.poiCategory==="parco" || visible=marker.poiCategory==="lago" ||visible=marker.poiCategory==="terme" || visible=marker.poiCategory==="cascata";
