@@ -163,7 +163,7 @@ function fitAll(){if(!mapReady)return;const bounds=L.latLngBounds(destinations.m
 function selectDestination(id){document.querySelectorAll(".map-place").forEach(b=>b.classList.toggle("selected",b.dataset.destination===id));destinations.forEach(d=>{if(markers[d.id])markers[d.id].setIcon(destinationIcon(d,d.id===id));});}
 function focusDestination(id){if(!mapReady)initializeMap();const d=getDestination(id),m=markers[id];if(!d||!m||!map)return;selectDestination(id);map.flyTo(d.coords,9,{duration:.8});setTimeout(()=>m.openPopup(),450);}
 //collegamneto pulsanti con funzione
-document.querySelectorAll(".map-filter").forEach(button=>{button.addEventListener("click".()=>{document.querySelectorAll(".map-filter").forEach(b=>{b.classList.remove("active");});button.classList.add("active");filterMap(button.dataset.filter);});});
+document.querySelectorAll(".map-filter").forEach(button=>{button.addEventListener("click",()=>{document.querySelectorAll(".map-filter").forEach(b=>{b.classList.remove("active");});button.classList.add("active");filterMap(button.dataset.filter);});});
 
 /* Collegamento itinerario → mappa */
 document.addEventListener("click",e=>{const b=e.target.closest("[data-go-map]");if(!b)return;document.getElementById("mappa").scrollIntoView({behavior:"smooth"});setTimeout(()=>focusDestination(b.dataset.goMap),500);});
