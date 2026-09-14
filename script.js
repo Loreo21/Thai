@@ -122,7 +122,7 @@ function updateChecklist(){let done=0;boxes.forEach(b=>{b.checked=localStorage.g
 boxes.forEach(b=>b.addEventListener("change",()=>{localStorage.setItem(`thai-check-${b.dataset.check}`,String(b.checked));updateChecklist();}));updateChecklist();
 
 /* MAPPA */
-let map=null,mapReady=false;const markers={},routeLayers=[],transportMarkers=[];
+let map=null,mapReady=false;const markers={},const poiMarkers=[],routeLayers=[],transportMarkers=[];
 function destinationIcon(d,active=false){return L.divIcon({className:"travel-marker",html:`<div class="travel-marker-inner ${active?"active":""}">${d.number}</div>`,iconSize:[38,38],iconAnchor:[19,19],popupAnchor:[0,-19]});}
 function poiIcon(poi){return L.divIcon({className:"poi-marker",html:`<div class="poi-marker-inner">${poi.icon}</div>`,iconSize:[32,32],iconAnchor:[16,16],popupAnchor:[0,-16]});}
 function transportIcon(icon){return L.divIcon({className:"transport-wrapper",html:`<div class="transport-marker">${icon}</div>`,iconSize:[30,30],iconAnchor:[15,15]});}
@@ -138,13 +138,32 @@ function initializeMap(){
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{minZoom:5,maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
   createMarkers();createPOIMarkers();createRoutes();mapReady=true;map.invalidateSize();setTimeout(()=>{map.invalidateSize();fitAll();},100);
 }
-function createMarkers(){destinations.forEach(d=>{const m=L.marker(d.coords,{icon:destinationIcon(d)}).addTo(map);m.bindPopup(popup(d),{autoPan:true,keepInView:true});m.on("click",()=>selectDestination(d.id));markers[d.id]=m;});}
-function createPOIMarkers(){pointsOfInterest.forEach(poi=>{const marker=L.marker(poi.coords,{icon:poiIcon(poi)}).addTo(map);marker.bindPopup(`<div class="popup-title">${poi.icon} ${poi.name}</div><div class="popup-date">${poi.category}</div><div class="popup-text">${poi.description}</div>`);});}
+function createMarkers(){destinations.forEach(d=>{const m=L.marker(d.coords,{icon:destinationIcon(d),zIndexOffset:0}).addTo(map);m.bindPopup(popup(d),{autoPan:true,keepInView:true});m.on("click",()=>selectDestination(d.id));markers[d.id]=m;});}
+function createPOIMarkers(){pointsOfInterest.forEach(poi=>{const marker=L.marker(poi.coords,{icon:poiIcon(poi),zIndexOffset:0}).addTo(map);marker.bindPopup(`<div class="popup-title">${poi.icon} ${poi.name}</div><div class="popup-date">${poi.category}</div><div class="popup-text">${poi.description}</div>`);marker.poiCategory=poi.category;poiMarkers.push(marker)});}
+function filterMap(category){if(category==="destinations"){destinations.forEach(d=>{if(markers[d.id]){markers[d.id].addTo(map);}});poiMarkers.forEach(marker=>{marker.removeFrom(map);});return;}destinations.forEach(d=>{if(markers[d.id]){markers[d.id].addTo(map);}});poiMarkers.forEach(marker=>{let visible=false;
+    if(category==="all"){visible=true;
+    }
+    else if(category==="food"){
+      visible=
+        marker.poiCategory==="streetfood" ||
+        marker.poiCategory==="mercato";
+    }
+    else{
+      visible=marker.poiCategory===category;
+    }
+
+    if(visible){
+      marker.addTo(map);
+    }else{
+      marker.removeFrom(map);
+    }
+  });}
 function createRoutes(){routeSegments.forEach(s=>{const a=getDestination(s.from),b=getDestination(s.to);if(!a||!b)return;const line=L.polyline([a.coords,b.coords],{color:"#0b756d",weight:3,opacity:.82,dashArray:"7 9",lineCap:"round"}).addTo(map);line.bindTooltip(`${s.icon} ${a.name} → ${b.name}`,{sticky:true});routeLayers.push(line);const mid=[(a.coords[0]+b.coords[0])/2,(a.coords[1]+b.coords[1])/2];transportMarkers.push(L.marker(mid,{icon:transportIcon(s.icon),interactive:false}).addTo(map));});}
 function fitAll(){if(!mapReady)return;const bounds=L.latLngBounds(destinations.map(d=>d.coords));if(bounds.isValid())map.fitBounds(bounds,{padding:[35,35],maxZoom:7});}
 function selectDestination(id){document.querySelectorAll(".map-place").forEach(b=>b.classList.toggle("selected",b.dataset.destination===id));destinations.forEach(d=>{if(markers[d.id])markers[d.id].setIcon(destinationIcon(d,d.id===id));});}
 function focusDestination(id){if(!mapReady)initializeMap();const d=getDestination(id),m=markers[id];if(!d||!m||!map)return;selectDestination(id);map.flyTo(d.coords,9,{duration:.8});setTimeout(()=>m.openPopup(),450);}
-
+//collegamneto pulsanti con funzione
+document.querySelectorAll(".map-filter").forEach(button=>{button.addEventListener("click".()=>{document.querySelectorAll(".map-filter").forEach(b=>{b.classList.remove("active");});button.classList.add("active");filterMap(button.dataset.filter);});});
 
 /* Collegamento itinerario → mappa */
 document.addEventListener("click",e=>{const b=e.target.closest("[data-go-map]");if(!b)return;document.getElementById("mappa").scrollIntoView({behavior:"smooth"});setTimeout(()=>focusDestination(b.dataset.goMap),500);});
