@@ -8,7 +8,7 @@ const destinations = [
   {id:"maewang",number:2,name:"Mae Wang",dates:"5 ottobre",region:"north",icon:"🐘",imageClass:"maewang",description:"Bungalow da 6. Sveglia all'alba: i nostri vicini di casa pesano 3 tonnellate.",tags:["🐘 Natura","🏡 Bungalow","🌄 Alba"],coords:[18.6165,98.7184]},
   {id:"chiangmai",number:3,name:"Chiang Mai",dates:"6–10 ottobre",region:"north",icon:"🚂",imageClass:"chiangmai",description:"Il rifugio nel cuore storico della città, tra templi antichi e Terra degli Angeli.",tags:["🏯 Templi","🌺 Cultura","🌿 Natura"],coords:[18.7883,98.9853]},
   {id:"chiangrai",number:4,name:"Chiang Rai",dates:"Tappa nel nord",region:"north",icon:"📍",imageClass:"north",description:"La tappa più a nord del nostro viaggio, tra templi e paesaggi del nord.",tags:["🏯 Templi","🌿 Nord","🧭 Esplorazione"],coords:[19.9105,99.8406]},
-  {id:"surat",number:5,name:"Surat Thani",dates:"Tappa di trasferimento",region:"south",icon:"🚐",imageClass:"surat",description:"Tappa di passaggio verso Khao Sok e il sud della Thailandia.",tags:["🚐 Transfer","🗺️ Sud"],coords:[9.1382,99.3217]},
+  {id:"phuket",number:5,name:"Phuket",dates:"Tappa di trasferimento",region:"south",icon:"🚐",imageClass:"Phuket",description:"Tappa di passaggio verso Khao Sok e il sud della Thailandia.",tags:["🚐 Transfer","🗺️ Sud"],coords:[9.1382,99.3217]},
   {id:"khaosok",number:6,name:"Khao Sok",dates:"10–12 ottobre",region:"south",icon:"🌿",imageClass:"khaosok",description:"Giungla primordiale, umidità e spirito di adattamento.",tags:["🌴 Giungla","🛶 Natura","🐒 Wildlife"],coords:[8.9120,98.5290]},
   {id:"aonang",number:7,name:"Ao Nang",dates:"12–17 ottobre",region:"south",icon:"🏖️",imageClass:"aonang",description:"Peace, laughter & sport: il meritato relax tropicale vista mare.",tags:["🏖️ Spiagge","🚤 Isole","🌅 Tramonti"],coords:[8.0340,98.8390]}
 ];
@@ -68,8 +68,8 @@ const routeSegments = [
   {from:"bangkok",to:"maewang",icon:"✈️"},
   {from:"maewang",to:"chiangmai",icon:"🚐"},
   {from:"chiangmai",to:"chiangrai",icon:"🚂"},
-  {from:"chiangmai",to:"surat",icon:"✈️"},
-  {from:"surat",to:"khaosok",icon:"🚐"},
+  {from:"chiangmai",to:"phuket",icon:"✈️"},
+  {from:"phuket",to:"khaosok",icon:"🚐"},
   {from:"khaosok",to:"aonang",icon:"🚐"},
   {from:"aonang",to:"bangkok",icon:"✈️"}
 ];
@@ -108,7 +108,7 @@ menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("o
 document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
 
 /* ITINERARIO */
-const displayOrder=["bangkok","maewang","chiangmai","chiangrai","surat","khaosok","aonang"];
+const displayOrder=["bangkok","maewang","chiangmai","chiangrai","phuket","khaosok","aonang"];
 const timeline=document.getElementById("timeline"),chips=document.getElementById("route-chips");
 displayOrder.forEach(id=>{
   const d=getDestination(id); if(!d)return;
