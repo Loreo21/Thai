@@ -46,6 +46,11 @@ const pointsOfInterest = [
   { id:"wat-chedi-luang",name:"Wat Chedi Luang", category: "tempio",icon:"🏯",description:"Mastodontica piramide di mattoni", price:"40 THB",coords:[18.786964603817076, 98.9865969279568]},
   { id:"wat-phra-singh", name:"Wat Phra Singh",category:"tempio",icon:"🏯",description:"Tempio più curato e decorato", price:"50 THB",coords:[18.788559872127443, 98.98198567957849]},
   { id:"wat-sri-suphan", name:"Wat Sri Suphan",category:"tempio",icon:"🏯",description:"Tempio ricoperto di lastre d'argento", price:"50 THB",coords:[18.778656644361792, 98.98360397137036]},
+  { id:"coconut-market", name:"Coconut Market", category:"mercato", icon:"🏮", description:"Mercato nella piantagione di Cocco", price:"Gratis",coords:[18.818035085233323, 99.01006423952924]},
+  { id:"sunday-night-market", name:"Sunday Night Market", category:"food", icon:"🍜", description:"Mercato al centro di Chiang Mai", price:"Gratis",coords:[18.788197679600156, 98.98798418717215]},
+  { id:"chiang-mai-gate-market", name:"Chiang Mai Gate Market", category:"food", icon:"🍜", description:"Mercato all'ingresso di Chiang Mai", price:"Gratis",coords:[18.78153759719787, 98.98861835259967]},
+  { id:"kad-luang", name:"Kad Luang", category:"food", icon:"🍜", description:"Mercato tradizionale thailandese", price:"Gratis",coords:[19.909775233023723, 99.8296710715284]},
+  { id:"nah-tai-market", name:"Nah Tao Market", category:"food", icon:"🍜", description:"Ottima zona per il cibo", price:"Gratis",coords:[20.04875278150809, 99.87644758223284]},
   { id:"night-bazaar", name:"Night Bazaar",category:"nightlife", icon:"🌃",description:"Labirinto di luci e bancarelle", price:"Gratis",coords:[18.78598411881089, 99.00070920304864]},
   { id:"dantewada-land-of-angels", name:"Dantewada Land of Angels", category:"cascata", icon:"🌳", description:"Terra degli angeli", price:"Pagamento",coords:[19.123223336964536, 98.9420461341175]},
   { id:"buatong-waterfall", name:"Buatong Waterfall", category:"cascata", icon:"🌳", description:"Cascate appiccicose", price:"Gratis",coords:[19.068896999346254, 99.07909444904108]},
@@ -55,11 +60,24 @@ const pointsOfInterest = [
   { id:"wat-rong-suea-ten", name:"Wat Rong Suea Ten",category:"tempio",icon:"🏯",description:"Tempio blu", price:"Gratis",coords:[19.9233, 99.84179]},
   { id:"wat-huay-pla-kang", name:"Wat Huay Pla Kang",category:"tempio",icon:"🏯",description:"Grande Dea", price:"Gratis, ascensore 40 THB",coords:[19.9492,99.80648]},
   { id:"mae-kachan", name:"Mae Kachan",category:"terme",icon:"♨️",description:"Terme bollenti", price:"Gratis",coords:[19.1150,99.46281]},
+  { id:"klong-root", name:"Klong Root", category:"lago", icon:"💧", description:"Canale di acque cristalline", price:"Ingresso:20-40 THB; kayak:300 THB",coords:[8.098529141807079, 98.80999126720121]},
   { id:"cheow-lan", name:"Cheow Lan", category:"lago", icon:"💧", description:"Lago verde smeraldo", price:"200+ THB",coords:[8.97667, 98.80444]},
+  { id:"din-daeng-doi", name:"Din Daeng Doi", category:"promontorio", icon:"🌳", description:"Belvedere sulla valle di nebbia", price:"50 THB per longboat",coords:[8.006830697453093, 98.83864097721276]},
+  { id:"namtok-ron", name:"Namtok Ron",category:"terme",icon:"♨️",description:"Cascata con terme", price:"400 THB",coords:[7.933059473413692, 99.20794611480261]},
+  { id:"railay-cliff", name:"Railay Cliff", category:"promontorio", icon:"🌳", description:"Escursioni e belvedere", price:"200+ THB per longboat",coords:[8.006830697453093, 98.83864097721276]},
+  { id:"wat-tham-sua", name:"Wat Tham Sua", category:"promontorio", icon:"🌳", description:"Belvedere su Krabi e i faraglioni", price:"50 THB",coords:[8.125841353952902, 98.92247484280246]},
+  { id:"princess-cave", name:"Princess Cave", category:"spiaggia", icon:"🏖️", description:"Grotta misteriosa", price:"Costo kayak",coords:[8.006830697453093, 98.83864097721276]},
+  { id:"arcipelago-protetto", name:"Arcipelago protetto", category:"spiaggia", icon:"🚤", description:"Arcipelago di 4 isole", price:"Costo longboat",coords:[7.96366796648578, 98.81154220213837]},
+  { id:"hong-lagoon", name:"Hong Lagoon", category:"spiaggia", icon:"🚤", description:"Laguna circondata da alte Falesie", price:"Costo 300+ THB",coords:[8.079006861100035, 98.67742135821888]},
+  { id:"koh-lao-lading", name:"Koh Lao Lading", category:"spiaggia", icon:"🚤", description:"Spiaggie bianche perfette per lo snorkeling", price:"Costo longboat",coords:[8.103096630571086, 98.68267985975045]},
+  { id:"maya-bay", name:"Maya Bay", category:"spiaggia", icon:"🚤", description:"Baia delle tartarughe", price:"Costo longboat",coords:[7.677951059316883, 98.76579992843274]},
+  { id:"pileh-lagoon", name:"Pileh Lagoon", category:"spiaggia", icon:"🚤", description:"Nessuna spiaggia ma solo imponenti pareti verticali", price:"Costo longboat",coords:[7.683674395923087, 98.76746876075077]},
   { id:"railay-beach", name:"Railay Beach", category:"spiaggia", icon:"🏖️", description:"Baia segreta", price:"Gratis",coords:[8.01148, 98.83776]},
   { id:"pai-plong", name:"Pai Plong Beach", category:"spiaggia", icon:"🏖️", description:"Spiaggia delle scimmie", price:"Gratis",coords:[8.023648454630726, 98.82758372623462]},
-  { id:"nopharat-thara", name:"Nopharat Thara Beach", category:"spiaggia", icon:"🏖️", description:"Spiaggia e partenza escursioni", price:"Gratis",coords:[8.042085570294779, 98.81078142669334]}
-  
+  { id:"nopharat-thara", name:"Nopharat Thara Beach", category:"spiaggia", icon:"🏖️", description:"Spiaggia e partenza escursioni", price:"Gratis",coords:[8.042085570294779, 98.81078142669334]},
+  { id:"jay-fai", name:"Jay Fai", category:"food",  icon:"🍜",description:"Bancarella stellata", price:"400+ BHT",coords:[13.752574915817059, 100.50469472699614]},
+  { id:"thip-samai", name:"Thip Samai", category:"food",  icon:"🍜",description:"Pad thai stellato", price:"200-400 BHT",coords:[13.752839863881144, 100.5048086233954]},
+  { id:"nai-ek-roll-noodle", name:"Nai Ek Roll Noodle", category:"food",  icon:"🍜",description:"Pad thai stellato", price:"200-400 BHT",coords:[13.740192778669009, 100.50993729819417]}
 ];
 
 
@@ -157,7 +175,7 @@ function filterMap(category){if(category==="destinations"){destinations.forEach(
     }else if(category==="temple"){
       visible=marker.poiCategory==="tempio"||marker.poiCategory==="entrydoor";
     }else if(category==="nature"){
-      visible=marker.poiCategory==="parco" || marker.poiCategory==="lago" ||marker.poiCategory==="terme" || marker.poiCategory==="cascata";
+      visible=marker.poiCategory==="parco" || marker.poiCategory==="lago" ||marker.poiCategory==="terme" || marker.poiCategory==="cascata" || marker.poiCategory==="promontorio";
     }else{
       visible=marker.poiCategory===category;
     }                                                                                                                                                                                                                                                                                                     
@@ -623,7 +641,7 @@ function renderPadThaiWinner() {
 
 function celebratePadThai(playerIndex) {
     const player = padThaiPlayers[playerIndex];
-    if (playerIndex === padThaiWinner) {setTimeout(() => {alert(`🏆 ${player.name} È IL PAD THAI CHAMPION! 🏆\n\n` +`Ha mangiato ${PADTHAI_MAX} Pad Thai! 🍜`);}, 100);} 
+    if (playerIndex === padThaiWinner) {setTimeout(() => {alert(`🏆 ${player.name} È IL CAMPIONE DELLA CACCA! 🏆\n\n` +`Ha cacato ${PADTHAI_MAX} volte! 💩`);}, 100);} 
     else {setTimeout(() => {alert(`🍜 ${player.name} ha raggiunto ${PADTHAI_MAX} Pad Thai!`);}, 100);}}
 
 function resetPadThai() {
