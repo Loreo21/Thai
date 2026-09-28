@@ -186,3 +186,485 @@ if("IntersectionObserver" in window){const observer=new IntersectionObserver(ent
 
 window.addEventListener("resize",()=>{if(!map)return;clearTimeout(window.__mapResize);window.__mapResize=setTimeout(()=>map.invalidateSize(),150);});
 window.addEventListener("load",()=>{if(map)map.invalidateSize();});
+
+/* =========================================================
+   PAD THAI CHAMPIONSHIP
+   ========================================================= */
+
+const PADTHAI_MAX = 15;
+
+
+/*
+ * =========================================================
+ * PARTECIPANTI
+ * =========================================================
+ *
+ * Modifica solamente questi nomi e i percorsi delle immagini.
+ *
+ * Esempio:
+ *
+ * image: "images/marco.png"
+ *
+ * Le immagini possono essere PNG, JPG, WEBP ecc.
+ */
+
+const padThaiPlayers = [
+    {
+        name: "Nome 1",
+        image: "images/player1.png"
+    },
+    {
+        name: "Nome 2",
+        image: "images/player2.png"
+    },
+    {
+        name: "Nome 3",
+        image: "images/player3.png"
+    },
+    {
+        name: "Nome 4",
+        image: "images/player4.png"
+    },
+    {
+        name: "Nome 5",
+        image: "images/player5.png"
+    },
+    {
+        name: "Nome 6",
+        image: "images/player6.png"
+    }
+];
+
+
+/*
+ * =========================================================
+ * STATO
+ * =========================================================
+ */
+
+let padThaiScores = [];
+
+let padThaiWinner = null;
+
+
+/*
+ * =========================================================
+ * CARICAMENTO DATI
+ * =========================================================
+ */
+
+function loadPadThaiData() {
+
+    const savedData = localStorage.getItem("thailandiaPadThai");
+
+    if (!savedData) {
+
+        padThaiScores = padThaiPlayers.map(() => 0);
+
+        padThaiWinner = null;
+
+        return;
+    }
+
+
+    try {
+
+        const data = JSON.parse(savedData);
+
+
+        if (
+            Array.isArray(data.scores) &&
+            data.scores.length === padThaiPlayers.length
+        ) {
+
+            padThaiScores = data.scores.map(score => {
+
+                return Math.max(
+                    0,
+                    Math.min(PADTHAI_MAX, Number(score) || 0)
+                );
+
+            });
+
+        } else {
+
+            padThaiScores = padThaiPlayers.map(() => 0);
+
+        }
+
+
+        padThaiWinner = data.winner ?? null;
+
+    } catch (error) {
+
+        console.error(
+            "Errore nel caricamento della classifica Pad Thai:",
+            error
+        );
+
+        padThaiScores = padThaiPlayers.map(() => 0);
+
+        padThaiWinner = null;
+    }
+}
+
+
+/*
+ * =========================================================
+ * SALVATAGGIO DATI
+ * =========================================================
+ */
+
+function savePadThaiData() {
+
+    const data = {
+
+        scores: padThaiScores,
+
+        winner: padThaiWinner
+
+    };
+
+
+    localStorage.setItem(
+        "thailandiaPadThai",
+        JSON.stringify(data)
+    );
+}
+
+
+/*
+ * =========================================================
+ * CREAZIONE CLASSIFICA
+ * =========================================================
+ */
+
+function renderPadThaiLeaderboard() {
+
+    const leaderboard =
+        document.getElementById("padthai-leaderboard");
+
+
+    if (!leaderboard) {
+        return;
+    }
+
+
+    leaderboard.innerHTML = "";
+
+
+    padThaiPlayers.forEach((player, index) => {
+
+        const score = padThaiScores[index];
+
+        const percentage =
+            (score / PADTHAI_MAX) * 100;
+
+
+        const playerElement =
+            document.createElement("div");
+
+
+        playerElement.className =
+            "padthai-player";
+
+
+        if (score >= PADTHAI_MAX) {
+
+            playerElement.classList.add("completed");
+
+        }
+
+
+        playerElement.dataset.player =
+            index;
+
+
+        playerElement.innerHTML = `
+
+            <div class="padthai-player-top">
+
+                <div class="padthai-player-name">
+
+                    <strong>
+                        ${escapePadThaiHTML(player.name)}
+                    </strong>
+
+                    ${
+                        score >= PADTHAI_MAX
+                            ? `<span class="padthai-completed-label">
+                                ✓ COMPLETATO
+                               </span>`
+                            : ""
+                    }
+
+                </div>
+
+
+                <div class="padthai-score">
+
+                    ${score} / ${PADTHAI_MAX}
+
+                </div>
+
+            </div>
+
+
+            <div class="padthai-progress-wrapper">
+
+                <button
+                    type="button"
+                    class="padthai-button padthai-minus"
+                    data-player="${index}"
+                    aria-label="Rimuovi un Pad Thai a ${escapePadThaiHTML(player.name)}"
+                    ${score <= 0 ? "disabled" : ""}
+                >
+                    −
+                </button>
+
+
+                <div class="padthai-progress">
+
+                    <div
+                        class="padthai-progress-fill"
+                        style="width: ${percentage}%"
+                    ></div>
+
+
+                    <div
+                        class="padthai-player-marker"
+                        style="left: ${percentage}%"
+                    >
+
+                        <img
+                            src="${player.image}"
+                            alt="${escapePadThaiHTML(player.name)}"
+                            onerror="this.style.display='none'"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="padthai-button padthai-plus"
+                    data-player="${index}"
+                    aria-label="Aggiungi un Pad Thai a ${escapePadThaiHTML(player.name)}"
+                    ${score >= PADTHAI_MAX ? "disabled" : ""}
+                >
+                    +
+                </button>
+
+            </div>
+
+
+            <div class="padthai-scale">
+
+                <span>0</span>
+                <span>5</span>
+                <span>10</span>
+                <span>15 🏆</span>
+
+            </div>
+
+        `;
+
+
+        leaderboard.appendChild(playerElement);
+
+    });
+
+
+    addPadThaiButtonListeners();
+
+    renderPadThaiWinner();
+}
+
+
+/*
+ * =========================================================
+ * PULSANTI
+ * =========================================================
+ */
+
+function addPadThaiButtonListeners() {
+
+    document
+        .querySelectorAll(".padthai-minus")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const playerIndex =
+                        Number(button.dataset.player);
+
+                    changePadThaiScore(
+                        playerIndex,
+                        -1
+                    );
+
+                }
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(".padthai-plus")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const playerIndex =
+                        Number(button.dataset.player);
+
+                    changePadThaiScore(
+                        playerIndex,
+                        1
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+/*
+ * =========================================================
+ * MODIFICA PUNTEGGIO
+ * =========================================================
+ */
+
+function changePadThaiScore(playerIndex, amount) {
+
+    if (
+        playerIndex < 0 ||
+        playerIndex >= padThaiPlayers.length
+    ) {
+        return;
+    }
+
+
+    const oldScore =
+        padThaiScores[playerIndex];
+
+
+    const newScore =
+        Math.max(
+            0,
+            Math.min(
+                PADTHAI_MAX,
+                oldScore + amount
+            )
+        );
+
+
+    /*
+     * Se non cambia nulla, non facciamo niente.
+     */
+
+    if (newScore === oldScore) {
+        return;
+    }
+
+
+    padThaiScores[playerIndex] =
+        newScore;
+
+
+    /*
+     * Il vincitore viene assegnato SOLO
+     * quando qualcuno raggiunge 15.
+     *
+     * Se il vincitore esiste già,
+     * non viene modificato.
+     */
+
+    if (
+        newScore >= PADTHAI_MAX &&
+        padThaiWinner === null
+    ) {
+
+        padThaiWinner = playerIndex;
+
+    }
+
+
+    savePadThaiData();
+
+    renderPadThaiLeaderboard();
+
+
+    /*
+     * Piccola animazione sulla barra modificata.
+     */
+
+    const playerElement =
+        document.querySelector(
+            `.padthai-player[data-player="${playerIndex}"]`
+        );
+
+
+    if (playerElement) {
+
+        playerElement.classList.add("bump");
+
+
+        setTimeout(() => {
+
+            playerElement.classList.remove("bump");
+
+        }, 350);
+
+    }
+
+
+    if (
+        newScore === PADTHAI_MAX &&
+        oldScore < PADTHAI_MAX
+    ) {
+
+        celebratePadThai(playerIndex);
+
+    }
+
+}
+
+function renderPadThaiWinner() {
+    const winnerBox = document.getElementById("padthai-winner");
+    const winnerName =document.getElementById("winner-name");
+    if (!winnerBox || !winnerName) {return;}
+    if (padThaiWinner === null || !padThaiPlayers[padThaiWinner]) {winnerBox.classList.add("hidden"); winnerName.textContent = ""; return;} winnerName.textContent = padThaiPlayers[padThaiWinner].name; winnerBox.classList.remove("hidden");}
+
+function celebratePadThai(playerIndex) {
+    const player = padThaiPlayers[playerIndex];
+    if (playerIndex === padThaiWinner) {setTimeout(() => {alert(`🏆 ${player.name} È IL PAD THAI CHAMPION! 🏆\n\n` +`Ha mangiato ${PADTHAI_MAX} Pad Thai! 🍜`);}, 100);} 
+    else {setTimeout(() => {alert(`🍜 ${player.name} ha raggiunto ${PADTHAI_MAX} Pad Thai!`);}, 100);}}
+
+function resetPadThai() {
+    const confirmed = confirm("Sei sicuro di voler azzerare tutta la classifica Cacca?");
+    if (!confirmed) {return;}
+    padThaiScores = padThaiPlayers.map(() => 0); padThaiWinner = null; savePadThaiData(); renderPadThaiLeaderboard();}
+
+function escapePadThaiHTML(text) {
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;") 
+        .replace(/'/g, "&#039;");}
+function initializePadThaiChampionship() {if (!document.getElementById("padthai-leaderboard")) { return;} loadPadThaiData(); renderPadThaiLeaderboard();
+    const resetButton = document.getElementById("padthai-reset");
+    if (resetButton) {resetButton.addEventListener("click", resetPadThai);}}
+if (document.readyState === "loading") { document.addEventListener( "DOMContentLoaded", initializePadThaiChampionship);} 
+else {initializePadThaiChampionship();}
+
+
