@@ -77,7 +77,13 @@ const pointsOfInterest = [
   { id:"nopharat-thara", name:"Nopharat Thara Beach", category:"spiaggia", icon:"🏖️", description:"Spiaggia e partenza escursioni", price:"Gratis",coords:[8.042085570294779, 98.81078142669334]},
   { id:"jay-fai", name:"Jay Fai", category:"food",  icon:"🍜",description:"Bancarella stellata", price:"400+ BHT",coords:[13.752574915817059, 100.50469472699614]},
   { id:"thip-samai", name:"Thip Samai", category:"food",  icon:"🍜",description:"Pad thai stellato", price:"200-400 BHT",coords:[13.752839863881144, 100.5048086233954]},
-  { id:"nai-ek-roll-noodle", name:"Nai Ek Roll Noodle", category:"food",  icon:"🍜",description:"Pad thai stellato", price:"200-400 BHT",coords:[13.740192778669009, 100.50993729819417]}
+  { id:"nai-ek-roll-noodle", name:"Nai Ek Roll Noodle", category:"food",  icon:"🍜",description:"Brodi e noodle arrotolati", price:"200 BHT",coords:[13.740192778669009, 100.50993729819417]},
+  { id:"trok-rong-moo-noodle", name:"Trok Rong Moo Noodle", category:"food",  icon:"🍜",description:"Noodle e wonton fritti ripieni", price:"200 BHT",coords:[13.737166469255742, 100.51479767690203]},
+  { id:"pad-kra-pao", name:"Original Pad Kra Pao 1993", category:"food",  icon:"🍜",description:"Carne saltata con basilico e peperoncino", price:"200 BHT",coords:[13.72278004344359, 100.49546478530874]},
+  { id:"krua-apsorn", name:"Krua Apsorn", category:"food",  icon:"🍜",description:"Cucina tipica e di altissima qualità", price:"200+ BHT",coords:[13.755165191325275, 100.5016267778314]},
+  { id:"k-panich", name:"K Panich", category:"food",  icon:"🍭",description:"Riso al mango", price:"50-150 BHT",coords:[13.75208666160438, 100.49836967595488]},
+  { id:"little-bee", name:"Little Bee Thai Crispy Crepe", category:"food",  icon:"🍭",description:"Crepes premiate Michelin", price:"60-200 BHT",coords:[13.73786924377692, 100.56043540600105]},
+  { id:"sweet-pista", name:"Sweet Pista Bangkok", category:"food",  icon:"🍜",description:"Tocco di occidentalità in oriente", price:"200-400 BHT",coords:[13.727573283077472, 100.5148596667286]}
 ];
 
 
