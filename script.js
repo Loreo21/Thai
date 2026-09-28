@@ -187,60 +187,37 @@ if("IntersectionObserver" in window){const observer=new IntersectionObserver(ent
 window.addEventListener("resize",()=>{if(!map)return;clearTimeout(window.__mapResize);window.__mapResize=setTimeout(()=>map.invalidateSize(),150);});
 window.addEventListener("load",()=>{if(map)map.invalidateSize();});
 
-/* =========================================================
-   PAD THAI CHAMPIONSHIP
-   ========================================================= */
+
 
 const PADTHAI_MAX = 15;
 
-
-/*
- * =========================================================
- * PARTECIPANTI
- * =========================================================
- *
- * Modifica solamente questi nomi e i percorsi delle immagini.
- *
- * Esempio:
- *
- * image: "images/marco.png"
- *
- * Le immagini possono essere PNG, JPG, WEBP ecc.
- */
-
 const padThaiPlayers = [
     {
-        name: "Nome 1",
+        name: "Emanuela",
         image: "images/player1.png"
     },
     {
-        name: "Nome 2",
+        name: "Francesca",
         image: "images/player2.png"
     },
     {
-        name: "Nome 3",
+        name: "Francesco",
         image: "images/player3.png"
     },
     {
-        name: "Nome 4",
+        name: "Luigi",
         image: "images/player4.png"
     },
     {
-        name: "Nome 5",
+        name: "Maria",
         image: "images/player5.png"
     },
     {
-        name: "Nome 6",
+        name: "Martina",
         image: "images/player6.png"
     }
 ];
 
-
-/*
- * =========================================================
- * STATO
- * =========================================================
- */
 
 let padThaiScores = [];
 
