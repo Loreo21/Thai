@@ -222,7 +222,7 @@ const padThaiPlayers = [
     },
     {
         name: "Francesca",
-        image: "images/francy.png"
+        image: "images/Francy.png"
     },
     {
         name: "Francesco",
