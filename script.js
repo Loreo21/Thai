@@ -90,8 +90,34 @@ const pointsOfInterest = [
   { id:"peace-oriental", name:"Peace Oriental", category:"food",  icon:"☕",description:"Gelato al matcha e té", price:"150+ BHT",coords:[13.744060915483301, 100.54120792351348]},
   { id:"matcha-people", name:"Matcha People", category:"food",  icon:"☕",description:"Matcha cherry cake", price:"100+ BHT",coords:[13.744255265148245, 100.54086250119605]},
   { id:"mtch-sathon", name:"MTCH Sathon", category:"food",  icon:"☕",description:"Matcha coconut bread", price:"100-200 BHT",coords:[13.718421651659325, 100.52094474766307]},
-  { id:"ren", name:"REN Cafe & goods", category:"food",  icon:"☕",description:"Matcha black sesame", price:"150-200 BHT",coords:[13.728144105282984, 100.51605414005927]}
+  { id:"ren", name:"REN Cafe & goods", category:"food",  icon:"☕",description:"Matcha black sesame", price:"150-200 BHT",coords:[13.728144105282984, 100.51605414005927]},
+  { id:"warorot-market", name:"Warorot Market", category:"food",  icon:"🍜",description:"Spezie e salsiccia locale", price:"100+ BHT",coords:[18.790691562383877, 98.99949618663842]},
+  { id:"white-market", name:"White Market", category:"food",  icon:"🏮",description:"Artigianato e caffè", price:"150+ BHT",coords:[18.799739696814797, 98.96738591954065]},
+  { id:"suki-hangphuakt", name:"Suki Changphuak", category:"food",  icon:"🍜",description:"Sukiyaki in zuppa o saltato", price:"50-100 BHT",coords:[18.795841555432943, 98.98519132374958]},
+  { id:"khao-soi-maesai", name:"Khao Soi Maesai", category:"food", icon:"🍜", description:"Profumata zuppa al curry giallo e latte di cocco", price:"50-100 BHT", coords:[18.799562421706586, 98.97524633441738]},
+  { id:"khao-so-i", name:"Khao So-i", category:"food", icon:"🍜", description:"Gourmet, con manzo morbido e wagyu", price:"200-400 BHT", coords:[18.80912400304178, 99.0047378006743]},
+  { id:"sp-chicken", name:"SP Chicken", category:"food", icon:"🍗", description:"Famoso per il suo pollo con pelle croccante", price:"50-200 BHT", coords:[18.78752693814135, 98.98118554890021]},
+  { id:"cherng-doi-roast-chicken", name:"Cherng Doi Roast Chicken", category:"food", icon:"🍗", description:"Pollo arrosto marinato al tamarindo", price:"50-200 BHT", coords:[18.799250035762306, 98.96607218261796]},
+  { id:"nengs-roasted-pork", name:"Neng's Clay Oven Roasted Pork", category:"food", icon:"🍖", description:"Carne di maiale arrosto morbido e croccante", price:"50-200 BHT", coords:[18.79979534276478, 99.00479124158375]},
+  { id:"heng-huh-noodles", name:"Heng Huh Noodles", category:"food", icon:"🍜", description:"Zuppe con polpette ", price:"50-100 BHT", coords:[18.807302333082387, 98.96751963921281]},
+  { id:"rote-yiam-beef-noodle", name:"Rote Yiam Beef Noodle", category:"food", icon:"🍜", description:"Brodo di manzo con radici e spezie cinesi", price:"100+ BHT", coords:[18.77790253167345, 98.99927918163995]},
+  { id:"akha-ama", name:"Akha Ama", category:"food", icon:"☕", description:"Celebre per i chicchi coltivati localmente", price:"50-100 BHT", coords:[18.79400811325391, 98.9925365314358]},
+  { id:"groon", name:"Groon", category:"food", icon:"🥞", description:"Il paradiso del brunch", price:"50-100 BHT", coords:[18.79513626789485, 98.97105775747184]},
+  { id:"mars-cafe", name:"Mars Cafe", category:"food", icon:"🚀", description:"Stupisce con un'estetica spaziale", price:"50-100 BHT", coords:[18.791549170938865, 98.97856767143003]},
   
+  { id:"carp-cafe", name:"Carp Cafe", category:"food", icon:"🍹", description:"Per sorseggiare drink sulle vasche di carpe koi colorate", price:"50-100 BHT", coords:[]},
+  { id:"chom-restaurant", name:"Chom Restaurant", category:"food", icon:"🌿", description:"Un'esperienza magica tra muschio, cascate e foresta", price:"50-100 BHT", coords:[]},
+  { id:"phaploen-market", name:"Phaploen Market", category:"food", icon:"🍢", description:"Street food autentico, artigianato locale e un'atmosfera genuina a prezzi irrisori", price:"50-100 BHT", coords:[]},
+  { id:"long-tail-boat-restaurant", name:"Long Tail Boat Restaurant", category:"food", icon:"🦐", description:"Grigliate di pesce fresco e crostacei in un'atmosfera informale e vivace", price:"50-100 BHT", coords:[]},
+  { id:"l-ultimo-pescatore", name:"L'Ultimo Pescatore", category:"food", icon:"🐟", description:"Scorpacciate di pesce alla griglia, gamberoni e calamari, con i piedi nella sabbia", price:"50-100 BHT", coords:[]},
+  { id:"wangsai-seafood", name:"Wangsai Seafood", category:"food", icon:"🦀", description:"Dalle ostriche ai calamari scottati, fino a granchi e grandi pesci", price:"50-100 BHT", coords:[]},
+  { id:"ton-ma-yom-thai-food", name:"Ton Ma Yom Thai Food", category:"food", icon:"🍲", description:"Piccolo e autentico, serve i sapori decisi del Sud senza compromessi", price:"50-100 BHT", coords:[]},
+  { id:"kodam-kitchen", name:"Kodam Kitchen", category:"food", icon:"🍛", description:"Un'istituzione per la cucina locale a prezzi onesti", price:"50-100 BHT", coords:[]},
+  { id:"jungle-kitchen", name:"Jungle Kitchen", category:"food", icon:"🍛", description:"Curry spettacolari, porzioni generose e tanta energia", price:"50-100 BHT", coords:[]},
+  { id:"krua-thara", name:"Krua Thara", category:"food", icon:"🦞", description:"Scegliete il pesce fresco direttamente dall'esposizione e decidete come farlo cucinare", price:"50-100 BHT", coords:[]},
+  { id:"ao-nang-mosque-street-food", name:"Ao Nang Mosque Street Food", category:"food", icon:"🍗", description:"Famoso pollo fritto del Sud e i deliziosi Roti ripieni di banana e latte condensato", price:"50-100 BHT", coords:[]},
+  { id:"lae-lay-grill", name:"Lae Lay Grill", category:"food", icon:"🌅", description:"Cocktail vista mare e poi tuffatevi in eccezionali grigliate di pesce", price:"50-100 BHT", coords:[]},
+  { id:"joy-beach-bar", name:"Joy Beach Bar", category:"food", icon:"🍹", description:"Niente sedie, solo cuscini sulla sabbia, musica chill e drink ghiacciati", price:"50-100 BHT", coords:[]}  
 ];
 
 
