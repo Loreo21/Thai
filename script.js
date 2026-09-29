@@ -103,21 +103,20 @@ const pointsOfInterest = [
   { id:"rote-yiam-beef-noodle", name:"Rote Yiam Beef Noodle", category:"food", icon:"🍜", description:"Brodo di manzo con radici e spezie cinesi", price:"100+ BHT", coords:[18.77790253167345, 98.99927918163995]},
   { id:"akha-ama", name:"Akha Ama", category:"food", icon:"☕", description:"Celebre per i chicchi coltivati localmente", price:"50-100 BHT", coords:[18.79400811325391, 98.9925365314358]},
   { id:"groon", name:"Groon", category:"food", icon:"🥞", description:"Il paradiso del brunch", price:"50-100 BHT", coords:[18.79513626789485, 98.97105775747184]},
-  { id:"mars-cafe", name:"Mars Cafe", category:"food", icon:"🚀", description:"Stupisce con un'estetica spaziale", price:"50-100 BHT", coords:[18.791549170938865, 98.97856767143003]},
-  
-  { id:"carp-cafe", name:"Carp Cafe", category:"food", icon:"🍹", description:"Per sorseggiare drink sulle vasche di carpe koi colorate", price:"50-100 BHT", coords:[]},
-  { id:"chom-restaurant", name:"Chom Restaurant", category:"food", icon:"🌿", description:"Un'esperienza magica tra muschio, cascate e foresta", price:"50-100 BHT", coords:[]},
-  { id:"phaploen-market", name:"Phaploen Market", category:"food", icon:"🍢", description:"Street food autentico, artigianato locale e un'atmosfera genuina a prezzi irrisori", price:"50-100 BHT", coords:[]},
-  { id:"long-tail-boat-restaurant", name:"Long Tail Boat Restaurant", category:"food", icon:"🦐", description:"Grigliate di pesce fresco e crostacei in un'atmosfera informale e vivace", price:"50-100 BHT", coords:[]},
-  { id:"l-ultimo-pescatore", name:"L'Ultimo Pescatore", category:"food", icon:"🐟", description:"Scorpacciate di pesce alla griglia, gamberoni e calamari, con i piedi nella sabbia", price:"50-100 BHT", coords:[]},
-  { id:"wangsai-seafood", name:"Wangsai Seafood", category:"food", icon:"🦀", description:"Dalle ostriche ai calamari scottati, fino a granchi e grandi pesci", price:"50-100 BHT", coords:[]},
-  { id:"ton-ma-yom-thai-food", name:"Ton Ma Yom Thai Food", category:"food", icon:"🍲", description:"Piccolo e autentico, serve i sapori decisi del Sud senza compromessi", price:"50-100 BHT", coords:[]},
-  { id:"kodam-kitchen", name:"Kodam Kitchen", category:"food", icon:"🍛", description:"Un'istituzione per la cucina locale a prezzi onesti", price:"50-100 BHT", coords:[]},
-  { id:"jungle-kitchen", name:"Jungle Kitchen", category:"food", icon:"🍛", description:"Curry spettacolari, porzioni generose e tanta energia", price:"50-100 BHT", coords:[]},
-  { id:"krua-thara", name:"Krua Thara", category:"food", icon:"🦞", description:"Scegliete il pesce fresco direttamente dall'esposizione e decidete come farlo cucinare", price:"50-100 BHT", coords:[]},
-  { id:"ao-nang-mosque-street-food", name:"Ao Nang Mosque Street Food", category:"food", icon:"🍗", description:"Famoso pollo fritto del Sud e i deliziosi Roti ripieni di banana e latte condensato", price:"50-100 BHT", coords:[]},
-  { id:"lae-lay-grill", name:"Lae Lay Grill", category:"food", icon:"🌅", description:"Cocktail vista mare e poi tuffatevi in eccezionali grigliate di pesce", price:"50-100 BHT", coords:[]},
-  { id:"joy-beach-bar", name:"Joy Beach Bar", category:"food", icon:"🍹", description:"Niente sedie, solo cuscini sulla sabbia, musica chill e drink ghiacciati", price:"50-100 BHT", coords:[]}  
+  { id:"mars-cafe", name:"Mars Cafe", category:"food", icon:"☕", description:"Stupisce con un'estetica spaziale", price:"50-100 BHT", coords:[18.791549170938865, 98.97856767143003]},
+  { id:"carp-cafe", name:"Carp Cafe", category:"food", icon:"🍹", description:"Un drink tra le vasche di carpe colorate", price:"100-200 BHT", coords:[18.73620855519193, 98.9307969484094]},
+  { id:"chom-restaurant", name:"Chom Restaurant", category:"food", icon:"🍜", description:"Un'atmosfera magica tra muschio, cascate e foresta", price:"200-400 BHT", coords:[18.74849603255298, 98.94549097927471]},
+  { id:"phaploen-market", name:"Phaploen Market", category:"food", icon:"🏮", description:"Street food autentico, artigianato locale", price:"100+ BHT", coords:[18.78665187495554, 99.00075001774121]},
+  { id:"long-tail-boat-restaurant", name:"Long Tail Boat Restaurant", category:"food", icon:"🦐", description:"Grigliate di pesce fresco e crostacei", price:"100-300 BHT", coords:[8.034479803750207, 98.81891623806938]},
+  { id:"l-ultimo-pescatore", name:"L'Ultimo Pescatore", category:"food", icon:"🐟", description:"Pesce grigliato con i piedi nella sabbia", price:"200-400 BHT", coords:[8.028598688855476, 98.82506959505471]},
+  { id:"wangsai-seafood", name:"Wangsai Seafood", category:"food", icon:"🦀", description:"Calamari, ostriche, granchi e grandi pesci", price:"150-400 BHT", coords:[8.038395918498543, 98.81594731397085]},
+  { id:"ton-ma-yom-thai-food", name:"Ton Ma Yom Thai Food", category:"food", icon:"🍲", description:"Piccolo e autentico", price:"100-300 BHT", coords:[8.037381465625298, 98.83447219176209]},
+  { id:"kodam-kitchen", name:"Kodam Kitchen", category:"food", icon:"🍜", description:"Cucina locale a prezzi onesti", price:"100-300 BHT", coords:[8.03845055822327, 98.81965091989487]},
+  { id:"jungle-kitchen", name:"Jungle Kitchen", category:"food", icon:"🍜", description:"Curry spettacolari", price:"100-200 BHT", coords:[8.038454433891799, 98.83319337330241]},  
+  { id:"krua-thara", name:"Krua Thara", category:"food", icon:"🦞", description:"Scegliete il pesce fresco direttamente dal banco e decidete come farlo cucinare", price:"250-500 BHT", coords:[8.047027031186156, 98.80017025798152]},
+  { id:"mosque-street-food", name:"Ao Nang Mosque Street Food", category:"food", icon:"🍗", description:"Pollo fritto, Roti ripieni di banana e latte condensato", price:"50-100 BHT", coords:[8.035057180942259, 98.83092150318481]},
+  { id:"lae-lay-grill", name:"Lae Lay Grill", category:"food", icon:"🍹", description:"Cocktail vista mare ed eccezionali grigliate di pesce", price:"200-300 BHT", coords:[8.038363532298956, 98.82161493836728]},
+  { id:"joy-beach-bar", name:"Joy Beach Bar", category:"food", icon:"🍹", description:"Cuscini sulla sabbia, musica chill e drink ghiacciati", price:"50-200 BHT", coords:[8.01221345144007, 98.84269540575444]}  
 ];
 
 
@@ -206,25 +205,30 @@ function initializeMap(){
 }
 function createMarkers(){destinations.forEach(d=>{const m=L.marker(d.coords,{icon:destinationIcon(d),zIndexOffset:0}).addTo(map);m.bindPopup(popup(d),{autoPan:true,keepInView:true});m.on("click",()=>selectDestination(d.id));markers[d.id]=m;});}
 function createPOIMarkers(){pointsOfInterest.forEach(poi=>{const marker=L.marker(poi.coords,{icon:poiIcon(poi),zIndexOffset:0}).addTo(map);marker.bindPopup(`<div class="popup-title">${poi.icon} ${poi.name}</div><div class="popup-date">${poi.category}</div><div class="popup-text">${poi.description}</div><div class="popup-price"> ${poi.price}</div>`);marker.poiCategory=poi.category;poiMarkers.push(marker)});}
-function filterMap(category){if(category==="destinations"){destinations.forEach(d=>{if(markers[d.id]){markers[d.id].addTo(map);}});poiMarkers.forEach(marker=>{marker.removeFrom(map);});return;}destinations.forEach(d=>{if(markers[d.id]){markers[d.id].addTo(map);}});poiMarkers.forEach(marker=>{let visible=false;
-    if(category==="all"){visible=true;
-    }else if(category==="food"){
-      visible=marker.poiCategory==="food" || marker.poiCategory==="mercato";
-    }else if(category==="shopping"){
-      visible=marker.poiCategory==="nightlife" ||marker.poiCategory==="shopping";
-    }else if(category==="temple"){
-      visible=marker.poiCategory==="tempio"||marker.poiCategory==="entrydoor";
-    }else if(category==="nature"){
-      visible=marker.poiCategory==="parco" || marker.poiCategory==="lago" ||marker.poiCategory==="terme" || marker.poiCategory==="cascata" || marker.poiCategory==="promontorio";
+function setRoutesVisibility(visible){routeLayers.forEach(route=>{if(visible){route.addTo(map);}else{route.removeFrom(map);}});transportMarkers.forEach(marker=>{if(visible){marker.addTo(map);}else{marker.removeFrom(map);}});}
+function filterMap(category){const showRoutes =category === "all" ||category === "destinations"; setRoutesVisibility(showRoutes);
+  if(category === "destinations"){destinations.forEach(d=>{
+      if(markers[d.id]){markers[d.id].addTo(map);}});poiMarkers.forEach(marker=>{marker.removeFrom(map);});return;}destinations.forEach(d=>{if(markers[d.id]){markers[d.id].addTo(map);}});
+  poiMarkers.forEach(marker=>{
+    let visible = false;
+    if(category === "all"){
+      visible = true;
+    }else if(category === "food"){
+      visible = marker.poiCategory === "food" || marker.poiCategory === "mercato";
+    }else if(category === "shopping"){
+      visible = marker.poiCategory === "nightlife" || marker.poiCategory === "shopping";
+    }else if(category === "temple"){
+      visible = marker.poiCategory === "tempio" || marker.poiCategory === "entrydoor";
+    }else if(category === "nature"){
+      visible = marker.poiCategory === "parco" || marker.poiCategory === "lago" || marker.poiCategory === "terme" || marker.poiCategory === "cascata" || marker.poiCategory === "promontorio";
     }else{
-      visible=marker.poiCategory===category;
-    }                                                                                                                                                                                                                                                                                                     
-    if(visible){
-      marker.addTo(map);
-    }else{
-      marker.removeFrom(map);
+      visible = marker.poiCategory === category;
     }
-  });}
+    if(visible){  marker.addTo(map);
+    }else{marker.removeFrom(map);
+    }
+  });
+}
 function createRoutes(){routeSegments.forEach(s=>{const a=getDestination(s.from),b=getDestination(s.to);if(!a||!b)return;const line=L.polyline([a.coords,b.coords],{color:"#0b756d",weight:3,opacity:.82,dashArray:"7 9",lineCap:"round"}).addTo(map);line.bindTooltip(`${s.icon} ${a.name} → ${b.name}`,{sticky:true});routeLayers.push(line);const mid=[(a.coords[0]+b.coords[0])/2,(a.coords[1]+b.coords[1])/2];transportMarkers.push(L.marker(mid,{icon:transportIcon(s.icon),interactive:false}).addTo(map));});}
 function fitAll(){if(!mapReady)return;const bounds=L.latLngBounds(destinations.map(d=>d.coords));if(bounds.isValid())map.fitBounds(bounds,{padding:[35,35],maxZoom:7});}
 function selectDestination(id){document.querySelectorAll(".map-place").forEach(b=>b.classList.toggle("selected",b.dataset.destination===id));destinations.forEach(d=>{if(markers[d.id])markers[d.id].setIcon(destinationIcon(d,d.id===id));});}
