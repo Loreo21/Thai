@@ -218,27 +218,27 @@ const PADTHAI_MAX = 15;
 const padThaiPlayers = [
     {
         name: "Emanuela",
-        image: "images/player1.png"
+        image: "Images/player1.png"
     },
     {
         name: "Francesca",
-        image: "images/Francy.png"
+        image: "Images/Francy.png"
     },
     {
         name: "Francesco",
-        image: "images/player3.png"
+        image: "Images/player3.png"
     },
     {
         name: "Luigi",
-        image: "images/player4.png"
+        image: "Images/player4.png"
     },
     {
         name: "Maria",
-        image: "images/player5.png"
+        image: "Images/player5.png"
     },
     {
         name: "Martina",
-        image: "images/player6.png"
+        image: "Images/player6.png"
     }
 ];
 
