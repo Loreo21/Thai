@@ -440,7 +440,7 @@ function renderPadThaiLeaderboard() {
                         <img
                             src="${player.image}"
                             alt="${escapePadThaiHTML(player.name)}"
-                            onerror="this.style.display='none'"
+                            
                         >
 
                     </div>
