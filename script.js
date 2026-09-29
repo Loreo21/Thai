@@ -83,7 +83,15 @@ const pointsOfInterest = [
   { id:"krua-apsorn", name:"Krua Apsorn", category:"food",  icon:"🍜",description:"Cucina tipica e di altissima qualità", price:"200+ BHT",coords:[13.755165191325275, 100.5016267778314]},
   { id:"k-panich", name:"K Panich", category:"food",  icon:"🍭",description:"Riso al mango", price:"50-150 BHT",coords:[13.75208666160438, 100.49836967595488]},
   { id:"little-bee", name:"Little Bee Thai Crispy Crepe", category:"food",  icon:"🍭",description:"Crepes premiate Michelin", price:"60-200 BHT",coords:[13.73786924377692, 100.56043540600105]},
-  { id:"sweet-pista", name:"Sweet Pista Bangkok", category:"food",  icon:"🍜",description:"Tocco di occidentalità in oriente", price:"200-400 BHT",coords:[13.727573283077472, 100.5148596667286]}
+  { id:"sweet-pista", name:"Sweet Pista Bangkok", category:"food",  icon:"🍜",description:"Tocco di occidentalità in oriente", price:"200-400 BHT",coords:[13.727573283077472, 100.5148596667286]},
+  { id:"scr", name:"Song Wat Coffee Roasters", category:"food",  icon:"☕",description:"Dirty coconout coffee", price:"100-200 BHT",coords:[13.739117668881425, 100.50664536813512]},
+  { id:"coffee-gallery", name:"After The Rain Coffee & Gallery", category:"food",  icon:"☕",description:"Locale immerso nel verde", price:"200-400 BHT",coords:[13.783074407631524, 100.26921021285918]},
+  { id:"slow-butter", name:"Slow Butter", category:"food",  icon:"🥞",description:"Bakery grab & go", price:"200-400 BHT",coords:[13.736756927991252, 100.51629544604397]},
+  { id:"peace-oriental", name:"Peace Oriental", category:"food",  icon:"☕",description:"Gelato al matcha e té", price:"150+ BHT",coords:[13.744060915483301, 100.54120792351348]},
+  { id:"matcha-people", name:"Matcha People", category:"food",  icon:"☕",description:"Matcha cherry cake", price:"100+ BHT",coords:[13.744255265148245, 100.54086250119605]},
+  { id:"mtch-sathon", name:"MTCH Sathon", category:"food",  icon:"☕",description:"Matcha coconut bread", price:"100-200 BHT",coords:[13.718421651659325, 100.52094474766307]},
+  { id:"ren", name:"REN Cafe & goods", category:"food",  icon:"☕",description:"Matcha black sesame", price:"150-200 BHT",coords:[13.728144105282984, 100.51605414005927]}
+  
 ];
 
 
@@ -440,7 +448,7 @@ function renderPadThaiLeaderboard() {
                         <img
                             src="${player.image}"
                             alt="${escapePadThaiHTML(player.name)}"
-                            
+                            onerror="this.style.display='none'"
                         >
 
                     </div>
