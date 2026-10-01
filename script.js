@@ -146,6 +146,7 @@ const getDestination = id => destinations.find(d => d.id === id);
 
 /* COUNTDOWN */
 function updateCountdown(){
+  console.log("NUOVO COUNTDOWN", departureDate, new Date(departureDate), Date.now());
   const target = new Date(departureDate).getTime();
   const diff = Date.now() - target;
   const msg = document.getElementById("countdown-message");
