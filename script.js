@@ -147,15 +147,15 @@ const getDestination = id => destinations.find(d => d.id === id);
 /* COUNTDOWN */
 function updateCountdown(){
   const target = new Date(departureDate).getTime();
-  const diff = target - Date.now();
+  const diff = Date.now() - target;
   const msg = document.getElementById("countdown-message");
-  if(Number.isNaN(target)){msg.textContent="Data non valida: controlla departureDate in script.js.";return;}
-  if(diff<=0){["days","hours","minutes","seconds"].forEach(id=>document.getElementById(id).textContent="0");msg.textContent="SI PARTE! 🇹🇭";return;}
-  const s=Math.floor(diff/1000);
-  document.getElementById("days").textContent=Math.floor(s/86400);
-  document.getElementById("hours").textContent=String(Math.floor((s%86400)/3600)).padStart(2,"0");
-  document.getElementById("minutes").textContent=String(Math.floor((s%3600)/60)).padStart(2,"0");
-  document.getElementById("seconds").textContent=String(s%60).padStart(2,"0");
+  if(Number.isNaN(target)){msg.textContent = "Data non valida: controlla departureDate in script.js.";return;}
+  if(diff < 0){["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent = "0");msg.textContent = "SI PARTE! 🇹🇭";return;}
+const s = Math.floor(diff / 1000);
+document.getElementById("days").textContent =Math.floor(s / 86400);
+document.getElementById("hours").textContent =String(Math.floor((s % 86400) / 3600)).padStart(2,"0");
+document.getElementById("minutes").textContent =String(Math.floor((s % 3600) / 60)).padStart(2,"0");
+document.getElementById("seconds").textContent =String(s % 60).padStart(2,"0");msg.textContent = "SIAMO IN THAILANDIA! 🇹🇭";
 }
 updateCountdown(); setInterval(updateCountdown,1000);
 
@@ -233,354 +233,118 @@ function createRoutes(){routeSegments.forEach(s=>{const a=getDestination(s.from)
 function fitAll(){if(!mapReady)return;const bounds=L.latLngBounds(destinations.map(d=>d.coords));if(bounds.isValid())map.fitBounds(bounds,{padding:[35,35],maxZoom:7});}
 function selectDestination(id){document.querySelectorAll(".map-place").forEach(b=>b.classList.toggle("selected",b.dataset.destination===id));destinations.forEach(d=>{if(markers[d.id])markers[d.id].setIcon(destinationIcon(d,d.id===id));});}
 function focusDestination(id){if(!mapReady)initializeMap();const d=getDestination(id),m=markers[id];if(!d||!m||!map)return;selectDestination(id);map.flyTo(d.coords,9,{duration:.8});setTimeout(()=>m.openPopup(),450);}
-//collegamneto pulsanti con funzione
 document.querySelectorAll(".map-filter").forEach(button=>{button.addEventListener("click",()=>{document.querySelectorAll(".map-filter").forEach(b=>{b.classList.remove("active");});button.classList.add("active");filterMap(button.dataset.filter);});});
-
-/* Collegamento itinerario → mappa */
 document.addEventListener("click",e=>{const b=e.target.closest("[data-go-map]");if(!b)return;document.getElementById("mappa").scrollIntoView({behavior:"smooth"});setTimeout(()=>focusDestination(b.dataset.goMap),500);});
-
-/* Collegamento popup → scheda */
 document.addEventListener("click",e=>{const b=e.target.closest("[data-popup]");if(!b)return;const card=document.querySelector(`.timeline-item[data-destination="${b.dataset.popup}"]`);if(card)card.scrollIntoView({behavior:"smooth",block:"center"});});
-
-/* Inizializzazione quando la sezione è vicina alla viewport. */
 const mapSection=document.getElementById("mappa");
 if("IntersectionObserver" in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){initializeMap();observer.disconnect();}},{rootMargin:"300px"});observer.observe(mapSection);}else initializeMap();
-
 window.addEventListener("resize",()=>{if(!map)return;clearTimeout(window.__mapResize);window.__mapResize=setTimeout(()=>map.invalidateSize(),150);});
 window.addEventListener("load",()=>{if(map)map.invalidateSize();});
 
-
-
 const PADTHAI_MAX = 15;
-
 const padThaiPlayers = [
-    {
-        name: "Emanuela",
-        image: "Images/Emanuela.png"
-    },
-    {
-        name: "Francesca",
-        image: "Images/Francy.png"
-    },
-    {
-        name: "Francesco",
-        image: "Images/Francesco.png"
-    },
-    {
-        name: "Luigi",
-        image: "Images/Luigi.png"
-    },
-    {
-        name: "Maria",
-        image: "Images/Maria.png"
-    },
-    {
-        name: "Martina",
-        image: "Images/Martina.png"
-    }
+    {name: "Emanuela",image: "Images/Emanuela.png"},
+    {name: "Francesca",image: "Images/Francy.png"},
+    {name: "Francesco",image: "Images/Francesco.png"},
+    {name: "Luigi",image: "Images/Luigi.png"},
+    {name: "Maria",image: "Images/Maria.png"},
+    {name: "Martina",image: "Images/Martina.png"}
 ];
-
-
 let padThaiScores = [];
-
 let padThaiWinner = null;
-
-
-/*
- * =========================================================
- * CARICAMENTO DATI
- * =========================================================
- */
-
 function loadPadThaiData() {
-
     const savedData = localStorage.getItem("thailandiaPadThai");
-
-    if (!savedData) {
-
-        padThaiScores = padThaiPlayers.map(() => 0);
-
-        padThaiWinner = null;
-
-        return;
-    }
-
-
-    try {
-
-        const data = JSON.parse(savedData);
-
-
-        if (
-            Array.isArray(data.scores) &&
-            data.scores.length === padThaiPlayers.length
-        ) {
-
+    if (!savedData) {padThaiScores = padThaiPlayers.map(() => 0);padThaiWinner = null;return;}
+    try {const data = JSON.parse(savedData);
+        if (Array.isArray(data.scores) && data.scores.length === padThaiPlayers.length) {
             padThaiScores = data.scores.map(score => {
-
-                return Math.max(
-                    0,
-                    Math.min(PADTHAI_MAX, Number(score) || 0)
-                );
-
-            });
-
-        } else {
-
-            padThaiScores = padThaiPlayers.map(() => 0);
-
-        }
-
-
+                return Math.max(0,Math.min(PADTHAI_MAX, Number(score) || 0));
+            });} else {padThaiScores = padThaiPlayers.map(() => 0);}
         padThaiWinner = data.winner ?? null;
-
-    } catch (error) {
-
-        console.error(
-            "Errore nel caricamento della classifica Pad Thai:",
-            error
-        );
-
+    } catch (error) {console.error("Errore nel caricamento della classifica Pad Thai:",error);
         padThaiScores = padThaiPlayers.map(() => 0);
-
-        padThaiWinner = null;
-    }
+        padThaiWinner = null;}
 }
-
-
-/*
- * =========================================================
- * SALVATAGGIO DATI
- * =========================================================
- */
 
 function savePadThaiData() {
-
-    const data = {
-
-        scores: padThaiScores,
-
-        winner: padThaiWinner
-
-    };
-
-
-    localStorage.setItem(
-        "thailandiaPadThai",
-        JSON.stringify(data)
-    );
+    const data = {scores: padThaiScores, winner: padThaiWinner};
+    localStorage.setItem("thailandiaPadThai", JSON.stringify(data));
 }
 
-
-/*
- * =========================================================
- * CREAZIONE CLASSIFICA
- * =========================================================
- */
-
 function renderPadThaiLeaderboard() {
-
-    const leaderboard =
-        document.getElementById("padthai-leaderboard");
-
-
-    if (!leaderboard) {
-        return;
-    }
-
-
+    const leaderboard = document.getElementById("padthai-leaderboard");
+    if (!leaderboard) {return;}
     leaderboard.innerHTML = "";
-
-
     padThaiPlayers.forEach((player, index) => {
-
         const score = padThaiScores[index];
-
-        const percentage =
-            (score / PADTHAI_MAX) * 100;
-
-
-        const playerElement =
-            document.createElement("div");
-
-
-        playerElement.className =
-            "padthai-player";
-
-
-        if (score >= PADTHAI_MAX) {
-
-            playerElement.classList.add("completed");
-
-        }
-
-
-        playerElement.dataset.player =
-            index;
-
-
+        const percentage = (score / PADTHAI_MAX) * 100;
+        const playerElement = document.createElement("div");
+        playerElement.className = "padthai-player";
+        if (score >= PADTHAI_MAX) {playerElement.classList.add("completed");}
+        playerElement.dataset.player = index;
         playerElement.innerHTML = `
-
             <div class="padthai-player-top">
-
                 <div class="padthai-player-name">
-
-                    <strong>
-                        ${escapePadThaiHTML(player.name)}
-                    </strong>
-
-                    ${
-                        score >= PADTHAI_MAX
-                            ? `<span class="padthai-completed-label">
-                                ✓ COMPLETATO
-                               </span>`
-                            : ""
-                    }
-
+                    <strong>${escapePadThaiHTML(player.name)}</strong>
+                    ${score >= PADTHAI_MAX ? `<span class="padthai-completed-label">✓ COMPLETATO</span>`: ""}
                 </div>
-
-
-                <div class="padthai-score">
-
-                    ${score} / ${PADTHAI_MAX}
-
-                </div>
-
+                <div class="padthai-score">${score} / ${PADTHAI_MAX}</div>
             </div>
-
-
             <div class="padthai-progress-wrapper">
-
                 <button
                     type="button"
                     class="padthai-button padthai-minus"
                     data-player="${index}"
                     aria-label="Rimuovi un Pad Thai a ${escapePadThaiHTML(player.name)}"
-                    ${score <= 0 ? "disabled" : ""}
-                >
-                    −
+                    ${score <= 0 ? "disabled" : ""} > −
                 </button>
-
-
                 <div class="padthai-progress">
-
                     <div
                         class="padthai-progress-fill"
                         style="width: ${percentage}%"
                     ></div>
-
-
                     <div
                         class="padthai-player-marker"
                         style="left: ${percentage}%"
                     >
-
                         <img
                             src="${player.image}"
                             alt="${escapePadThaiHTML(player.name)}"
                             onerror="this.style.display='none'"
                         >
-
                     </div>
-
                 </div>
-
-
                 <button
                     type="button"
                     class="padthai-button padthai-plus"
                     data-player="${index}"
                     aria-label="Aggiungi un Pad Thai a ${escapePadThaiHTML(player.name)}"
-                    ${score >= PADTHAI_MAX ? "disabled" : ""}
-                >
-                    +
+                    ${score >= PADTHAI_MAX ? "disabled" : ""}> +
                 </button>
-
             </div>
-
-
             <div class="padthai-scale">
-
                 <span>0</span>
                 <span>5</span>
                 <span>10</span>
                 <span>15 🏆</span>
-
             </div>
-
         `;
-
-
         leaderboard.appendChild(playerElement);
-
     });
-
-
     addPadThaiButtonListeners();
-
     renderPadThaiWinner();
 }
 
-
-/*
- * =========================================================
- * PULSANTI
- * =========================================================
- */
-
 function addPadThaiButtonListeners() {
-
     document
         .querySelectorAll(".padthai-minus")
         .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const playerIndex =
-                        Number(button.dataset.player);
-
-                    changePadThaiScore(
-                        playerIndex,
-                        -1
-                    );
-
-                }
-            );
-
-        });
-
-
+            button.addEventListener( "click", () => {const playerIndex = Number(button.dataset.player); changePadThaiScore(playerIndex, -1);});});
     document
         .querySelectorAll(".padthai-plus")
         .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const playerIndex =
-                        Number(button.dataset.player);
-
-                    changePadThaiScore(
-                        playerIndex,
-                        1
-                    );
-
-                }
-            );
-
-        });
-
+            button.addEventListener( "click",() => {const playerIndex = Number(button.dataset.player); changePadThaiScore(playerIndex, 1);});});
 }
-
-
-/*
- * =========================================================
- * MODIFICA PUNTEGGIO
- * =========================================================
- */
 
 function changePadThaiScore(playerIndex, amount) {
 
