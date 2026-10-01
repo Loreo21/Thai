@@ -150,7 +150,7 @@ function updateCountdown(){
   const diff = Date.now() - target;
   const msg = document.getElementById("countdown-message");
   if(Number.isNaN(target)){msg.textContent = "Data non valida: controlla departureDate in script.js.";return;}
-  if(diff => 0){["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent = "0");msg.textContent = "SI PARTE! 🇹🇭";return;}
+  if(diff < 0){["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent = "0");msg.textContent = "SI PARTE! 🇹🇭";return;}
 const s = Math.floor(diff / 1000);
 document.getElementById("days").textContent =Math.floor(s / 86400);
 document.getElementById("hours").textContent =String(Math.floor((s % 86400) / 3600)).padStart(2,"0");
