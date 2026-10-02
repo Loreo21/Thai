@@ -144,23 +144,6 @@
 }
 
 
-.proverb-number {
-    position: absolute;
-
-    right: 25px;
-    bottom: -45px;
-
-    font-size: 230px;
-    font-weight: 900;
-    line-height: 1;
-
-    color: rgba(11, 117, 109, 0.07);
-
-    pointer-events: none;
-    user-select: none;
-}
-
-
 .proverb-content {
     position: relative;
     z-index: 2;
