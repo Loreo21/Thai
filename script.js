@@ -172,12 +172,12 @@ const tripStartDate = "2026-10-02";
 
 const proverbs = [
     {
-        text: "Ogni viaggio comincia con un passo.",
-        author: "Saggezza del viaggio"
+        text: "Rosso di sera, bel tempo si spera",
+        author: "Il metereologo"
     },
     {
-        text: "La strada più bella è quella che non conosci ancora.",
-        author: "Saggezza del viaggio"
+        text: "L'abito non fa il monaco",
+        author: "L'ateo"
     },
     {
         text: "Non conta quanto lontano vai, ma ciò che scopri lungo la strada.",
