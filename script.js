@@ -176,12 +176,12 @@ const proverbs = [
         author: "Il metereologo"
     },
     {
-        text: "L'abito non fa il monaco",
-        author: "L'ateo"
+        text: "Rosso di sera, bel tempo si spera",
+        author: "Il metereologo"
     },
     {
-        text: "Non conta quanto lontano vai, ma ciò che scopri lungo la strada.",
-        author: "Saggezza del viaggio"
+        text: "L'abito non fa il monaco",
+        author: "L'ateo"
     },
     {
         text: "Un viaggio condiviso diventa un ricordo per sempre.",
