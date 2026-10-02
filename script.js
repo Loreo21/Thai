@@ -1,6 +1,6 @@
   /* THAILANDIA '26 — V3 */
 
-const departureDate = "2026-10-01T19:05:00+02:00";
+const departureDate = "2026-10-02T8:45:00+02:00";
 
 /* Dati delle destinazioni. Le coordinate possono essere modificate liberamente. */
 const destinations = [
@@ -118,7 +118,6 @@ const pointsOfInterest = [
   { id:"lae-lay-grill", name:"Lae Lay Grill", category:"food", icon:"🍹", description:"Cocktail vista mare ed eccezionali grigliate di pesce", price:"200-300 BHT", coords:[8.038363532298956, 98.82161493836728]},
   { id:"joy-beach-bar", name:"Joy Beach Bar", category:"food", icon:"🍹", description:"Cuscini sulla sabbia, musica chill e drink ghiacciati", price:"50-200 BHT", coords:[8.01221345144007, 98.84269540575444]}  
 ];
-
 
 /* Tratte indicative. Se conoscerete l'ordine esatto di Chiang Rai, basta cambiare questo array. */
 const routeSegments = [
@@ -339,109 +338,28 @@ function renderPadThaiLeaderboard() {
 function addPadThaiButtonListeners() {
     document
         .querySelectorAll(".padthai-minus")
-        .forEach(button => {
-            button.addEventListener( "click", () => {const playerIndex = Number(button.dataset.player); changePadThaiScore(playerIndex, -1);});});
+        .forEach(button => {button.addEventListener( "click", () => {const playerIndex = Number(button.dataset.player); changePadThaiScore(playerIndex, -1);});});
     document
         .querySelectorAll(".padthai-plus")
-        .forEach(button => {
-            button.addEventListener( "click",() => {const playerIndex = Number(button.dataset.player); changePadThaiScore(playerIndex, 1);});});
+        .forEach(button => {button.addEventListener( "click",() => {const playerIndex = Number(button.dataset.player); changePadThaiScore(playerIndex, 1);});});
 }
 
 function changePadThaiScore(playerIndex, amount) {
+    if (playerIndex < 0 || playerIndex >= padThaiPlayers.length) { return;}
+    const oldScore = padThaiScores[playerIndex];
+    const newScore = Math.max(0, Math.min(PADTHAI_MAX, oldScore + amount));
+    if (newScore === oldScore) {return;}
+    padThaiScores[playerIndex] = newScore;
 
-    if (
-        playerIndex < 0 ||
-        playerIndex >= padThaiPlayers.length
-    ) {
-        return;
-    }
-
-
-    const oldScore =
-        padThaiScores[playerIndex];
-
-
-    const newScore =
-        Math.max(
-            0,
-            Math.min(
-                PADTHAI_MAX,
-                oldScore + amount
-            )
-        );
-
-
-    /*
-     * Se non cambia nulla, non facciamo niente.
-     */
-
-    if (newScore === oldScore) {
-        return;
-    }
-
-
-    padThaiScores[playerIndex] =
-        newScore;
-
-
-    /*
-     * Il vincitore viene assegnato SOLO
-     * quando qualcuno raggiunge 15.
-     *
-     * Se il vincitore esiste già,
-     * non viene modificato.
-     */
-
-    if (
-        newScore >= PADTHAI_MAX &&
-        padThaiWinner === null
-    ) {
-
-        padThaiWinner = playerIndex;
-
-    }
-
-
+    if (newScore >= PADTHAI_MAX && padThaiWinner === null) { padThaiWinner = playerIndex;}
     savePadThaiData();
-
     renderPadThaiLeaderboard();
-
-
-    /*
-     * Piccola animazione sulla barra modificata.
-     */
-
-    const playerElement =
-        document.querySelector(
-            `.padthai-player[data-player="${playerIndex}"]`
-        );
-
-
-    if (playerElement) {
-
-        playerElement.classList.add("bump");
-
-
-        setTimeout(() => {
-
-            playerElement.classList.remove("bump");
-
-        }, 350);
-
+    const playerElement = document.querySelector( `.padthai-player[data-player="${playerIndex}"]`);
+    if (playerElement) { playerElement.classList.add("bump");
+        setTimeout(() => {playerElement.classList.remove("bump");}, 350);
     }
-
-
-    if (
-        newScore === PADTHAI_MAX &&
-        oldScore < PADTHAI_MAX
-    ) {
-
-        celebratePadThai(playerIndex);
-
-    }
-
+    if ( newScore === PADTHAI_MAX && oldScore < PADTHAI_MAX) {celebratePadThai(playerIndex);}
 }
-
 function renderPadThaiWinner() {
     const winnerBox = document.getElementById("padthai-winner");
     const winnerName =document.getElementById("winner-name");
@@ -470,5 +388,4 @@ function initializePadThaiChampionship() {if (!document.getElementById("padthai-
     if (resetButton) {resetButton.addEventListener("click", resetPadThai);}}
 if (document.readyState === "loading") { document.addEventListener( "DOMContentLoaded", initializePadThaiChampionship);} 
 else {initializePadThaiChampionship();}
-
 
