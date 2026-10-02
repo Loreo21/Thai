@@ -164,6 +164,151 @@ const menuToggle=document.querySelector(".menu-toggle"),navLinks=document.queryS
 menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));});
 document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
 
+/* =========================================================
+   SEZIONE 00 — PROVERBIO DEL GIORNO
+   ========================================================= */
+
+const tripStartDate = "2026-10-02";
+
+const proverbs = [
+    {
+        text: "Ogni viaggio comincia con un passo.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "La strada più bella è quella che non conosci ancora.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Non conta quanto lontano vai, ma ciò che scopri lungo la strada.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Un viaggio condiviso diventa un ricordo per sempre.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Chi parte per scoprire, torna con qualcosa in più.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "A volte perdersi è il modo migliore per trovare qualcosa di nuovo.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Il viaggio insegna ciò che nessuna mappa può mostrare.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Ogni tramonto visto da un luogo nuovo è un ricordo in più.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Le migliori storie iniziano spesso con un biglietto di sola andata.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Mangia, esplora, ridi e lascia che il viaggio faccia il resto.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "La felicità non è una destinazione, ma il viaggio.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Un nuovo posto apre una nuova finestra sul mondo.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "I ricordi migliori non entrano in valigia.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Il mondo è troppo grande per restare sempre nello stesso posto.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Ogni giorno lontano da casa è una pagina di una nuova storia.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "La compagnia giusta rende speciale anche la strada più lunga.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Viaggiare significa raccogliere momenti, non cose.",
+        author: "Saggezza del viaggio"
+    },
+    {
+        text: "Alla fine del viaggio resteranno soprattutto le risate.",
+        author: "Saggezza del viaggio"
+    }
+];
+
+
+function updateDailyProverb() {
+
+    const proverbElement = document.getElementById("daily-proverb");
+    const authorElement = document.getElementById("daily-proverb-author");
+    const messageElement = document.getElementById("daily-proverb-message");
+
+    if (!proverbElement || !authorElement || !messageElement) {
+        return;
+    }
+
+    const start = new Date(`${tripStartDate}T00:00:00`);
+
+    const now = new Date();
+
+    start.setHours(0, 0, 0, 0);
+
+    const today = new Date(now);
+    today.setHours(0, 0, 0, 0);
+
+    const difference =
+        Math.floor((today - start) / (1000 * 60 * 60 * 24));
+
+    if (difference < 0) {
+
+        proverbElement.textContent =
+            '"La parte più bella del viaggio è sapere che sta per cominciare."';
+
+        authorElement.textContent =
+            "— Saggezza del viaggio";
+
+        messageElement.textContent =
+            "MANCANO POCHI GIORNI! 🇹🇭";
+
+        return;
+    }
+
+  
+    const proverbIndex = difference;
+
+    const selectedIndex = Math.min(
+        proverbIndex,
+        proverbs.length - 1
+    );
+
+    const proverb = proverbs[selectedIndex];
+
+    proverbElement.textContent =
+        `"${proverb.text}"`;
+
+    authorElement.textContent =
+        `— ${proverb.author}`;
+
+    messageElement.textContent =
+        `GIORNO ${selectedIndex + 1} · BUON VIAGGIO! 🇹🇭`;
+}
+
+
+/* Avvio */
+
+updateDailyProverb();
+
+
+
 /* ITINERARIO */
 const displayOrder=["bangkok","maewang","chiangmai","chiangrai","phuket","khaosok","aonang"];
 const timeline=document.getElementById("timeline"),chips=document.getElementById("route-chips");
