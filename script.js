@@ -184,32 +184,32 @@ const proverbs = [
         author: "L'ateo"
     },
     {
-        text: "Un viaggio condiviso diventa un ricordo per sempre.",
-        author: "Saggezza del viaggio"
+        text: "Al buio la villana è bella quanto la dama",
+        author: "Il generale"
     },
     {
-        text: "Chi parte per scoprire, torna con qualcosa in più.",
-        author: "Saggezza del viaggio"
+        text: "Perdersi è l'unico modo per trovare un posto che sia introvabile",
+        author: "Il capitano"
     },
     {
-        text: "A volte perdersi è il modo migliore per trovare qualcosa di nuovo.",
-        author: "Saggezza del viaggio"
+        text: "Quando canta la rana, la pioggia non è lontana",
+        author: "Imon"
     },
     {
-        text: "Il viaggio insegna ciò che nessuna mappa può mostrare.",
-        author: "Saggezza del viaggio"
+        text: "Se hai sete...bevi",
+        author: "Un romano sulla metro B"
     },
     {
-        text: "Ogni tramonto visto da un luogo nuovo è un ricordo in più.",
-        author: "Saggezza del viaggio"
+        text: "Una rondine non fa primavera, una nuvola non fa bufera.",
+        author: "L'animalista"
     },
     {
-        text: "Le migliori storie iniziano spesso con un biglietto di sola andata.",
-        author: "Saggezza del viaggio"
+        text: "Chi la fa ... tiri lo sciaquone",
+        author: "L'inserviente"
     },
     {
-        text: "Mangia, esplora, ridi e lascia che il viaggio faccia il resto.",
-        author: "Saggezza del viaggio"
+        text: "Se vuoi andare veloce, cammina da solo. Se vuoi andare lontano, cammina insieme a qualcuno",
+        author: "L'escursionista"
     },
     {
         text: "La felicità non è una destinazione, ma il viaggio.",
