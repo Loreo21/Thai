@@ -200,8 +200,8 @@ const proverbs = [
         author: "Un romano sulla metro B"
     },
     {
-        text: "Una rondine non fa primavera, una nuvola non fa bufera.",
-        author: "L'animalista"
+        text: "Chi ha portato la tonaca puzza sempre di frate",
+        author: "L'insegnante"
     },
     {
         text: "Chi la fa ... tiri lo sciaquone",
@@ -212,35 +212,35 @@ const proverbs = [
         author: "L'escursionista"
     },
     {
-        text: "La felicità non è una destinazione, ma il viaggio.",
-        author: "Saggezza del viaggio"
+        text: "Dietro la normalità si nascondono 2000 sorprese",
+        author: "Il commerciante"
     },
     {
-        text: "Un nuovo posto apre una nuova finestra sul mondo.",
-        author: "Saggezza del viaggio"
+        text: "Una rondine non fa primavera, una nuvola non fa bufera.",
+        author: "L'animalista"
     },
     {
-        text: "I ricordi migliori non entrano in valigia.",
-        author: "Saggezza del viaggio"
+        text: "Tra il dire e il fare c'è di mezzo il mare",
+        author: "Il pigro"
     },
     {
         text: "Il mondo è troppo grande per restare sempre nello stesso posto.",
         author: "Saggezza del viaggio"
     },
     {
-        text: "Ogni giorno lontano da casa è una pagina di una nuova storia.",
-        author: "Saggezza del viaggio"
+        text: "Alla fame è presto ridotto chi s'imbarca senza biscotto",
+        author: "L'affamato"
     },
     {
         text: "La compagnia giusta rende speciale anche la strada più lunga.",
         author: "Saggezza del viaggio"
     },
     {
-        text: "Viaggiare significa raccogliere momenti, non cose.",
-        author: "Saggezza del viaggio"
+        text: "La felicità non è una destinazione, ma il viaggio.",
+        author: "Il guru"
     },
     {
-        text: "Alla fine del viaggio resteranno soprattutto le risate.",
+        text: "",
         author: "Saggezza del viaggio"
     }
 ];
