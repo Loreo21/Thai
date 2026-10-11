@@ -188,31 +188,31 @@ const proverbs = [
         author: "Il generale"
     },
     {
-        text: "Perdersi è l'unico modo per trovare un posto che sia introvabile",
+        text: "Perdersi è l'unico modo per trovare un posto che sia introvabile.",
         author: "Il capitano"
     },
     {
-        text: "Quando canta la rana, la pioggia non è lontana",
+        text: "Quando canta la rana, la pioggia non è lontana.",
         author: "Imon"
     },
     {
-        text: "Se hai sete...bevi",
+        text: "Se hai sete...bevi.",
         author: "Un romano sulla metro B"
     },
     {
-        text: "Chi ha portato la tonaca puzza sempre di frate",
+        text: "Chi ha portato la tonaca puzza sempre di frate.",
         author: "L'insegnante"
     },
     {
-        text: "Chi la fa ... tiri lo sciaquone",
+        text: "Chi la fa ... tiri lo sciaquone.",
         author: "L'inserviente"
     },
     {
-        text: "Se vuoi andare veloce, cammina da solo. Se vuoi andare lontano, cammina insieme a qualcuno",
+        text: "Se vuoi andare veloce, cammina da solo. Se vuoi andare lontano, cammina insieme a qualcuno.",
         author: "L'escursionista"
     },
     {
-        text: "Dietro la normalità si nascondono 2000 sorprese",
+        text: "Dietro la normalità si nascondono 2000 sorprese.",
         author: "Il commerciante"
     },
     {
@@ -220,28 +220,28 @@ const proverbs = [
         author: "L'animalista"
     },
     {
-        text: "Tra il dire e il fare c'è di mezzo il mare",
+        text: "Tra il dire e il fare c'è di mezzo il mare.",
         author: "Il pigro"
     },
     {
-        text: "Il mondo è troppo grande per restare sempre nello stesso posto.",
-        author: "Saggezza del viaggio"
+        text: "Chi dorme non piglia pesci.",
+        author: "Il pescatore"
     },
     {
-        text: "Alla fame è presto ridotto chi s'imbarca senza biscotto",
+        text: "Alla fame è presto ridotto chi s'imbarca senza biscotto.",
         author: "L'affamato"
     },
     {
-        text: "La compagnia giusta rende speciale anche la strada più lunga.",
-        author: "Saggezza del viaggio"
+        text: "Non ogni lettera va alla posta e non ogni domanda vuole risposta.",
+        author: "Il corriere"
     },
     {
         text: "La felicità non è una destinazione, ma il viaggio.",
         author: "Il guru"
     },
     {
-        text: "",
-        author: "Saggezza del viaggio"
+        text: "I ricordi migliori non entrano in una valigia.",
+        author: "L'informatico"
     }
 ];
 
