@@ -1,2 +1,0 @@
-# Thai
-Thai_Trip
