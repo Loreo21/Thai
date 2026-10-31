@@ -513,11 +513,11 @@ function renderPadThaiWinner() {
 
 function celebratePadThai(playerIndex) {
     const player = padThaiPlayers[playerIndex];
-    if (playerIndex === padThaiWinner) {setTimeout(() => {alert(`🏆 ${player.name} È IL CAMPIONE DELLA CACCA! 🏆\n\n` +`Ha cacato ${PADTHAI_MAX} volte! 💩`);}, 100);} 
+    if (playerIndex === padThaiWinner) {setTimeout(() => {alert(`🏆 ${player.name} È IL CAMPIONE DELLE BACCHETTE! 🏆\n\n` +`Ha mangiato ${PADTHAI_MAX} pad thai! 🍜`);}, 100);} 
     else {setTimeout(() => {alert(`🍜 ${player.name} ha raggiunto ${PADTHAI_MAX} Pad Thai!`);}, 100);}}
 
 function resetPadThai() {
-    const confirmed = confirm("Sei sicuro di voler azzerare tutta la classifica Cacca?");
+    const confirmed = confirm("Sei sicuro di voler azzerare tutta la classifica?");
     if (!confirmed) {return;}
     padThaiScores = padThaiPlayers.map(() => 0); padThaiWinner = null; savePadThaiData(); renderPadThaiLeaderboard();}
 
